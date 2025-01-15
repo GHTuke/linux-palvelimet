@@ -26,18 +26,18 @@ Pohjateksti: https://www.gnu.org/philosophy/free-sw.html
 
 Free Software Foundation (FSF) (Free Software Foundation, Inc. 2024) määrittelemät 4 (0-3) vapautta ohjelmistoille.
 
-  0) Vapaus käyttää ohjelmistoa miten haluaa, mihin vain käyttötapaukseen.
+  0) Vapaus käyttää ohjelmistoa miten haluaa, mihin vain käyttötapaukseen.\
          Tämä kattaa myös vapaan ohjelmiston käytön niin, että siitä muokataan kaupallinen versio.\
          Vapaan ohjelmiston pitää olla saatavilla ilman maksua tai muita käyttäjiä rajoittavia asetuksia.
      
-  1) Vapaus opiskella miten ohjelmisto toimii, ja sen muokkaus jotta se toimii niin kuin itse haluat.
+  1) Vapaus opiskella miten ohjelmisto toimii, ja sen muokkaus jotta se toimii niin kuin itse haluat.\
          Vapaa ohjelmisto vaatii muutakin kuin avoimen lähdekoodin (Open source). Avoin lähdekoodi ei välttämättä vielä takaa oikeutta tehdä muokatuilla versioilla mitä haluaa.\
          Oikeus muokata ohjelmistoa ilman, että siitä tehdyistä henkilökohtaisista tai kaupallisista versioista tarvitsee ilmoittaa ohjelmiston luojalle.
      
-  2) Vapaus jakaa kopioita toisille.
+  2) Vapaus jakaa kopioita toisille.\
          Oikeus jakaa alkuperäisestä ohjelmistosta kopiota kenelle tahansa missä tahansa.
      
-  3) Vapaus jakaa kopiota omasta muokkaamastasi versiostasi.
+  3) Vapaus jakaa kopiota omasta muokkaamastasi versiostasi.\
          Jos muokattujen versioiden jakaminen eteenpäin vaatisi, että ne eivät ole kaupallisia olisi se vastoin vapaan ohjelmiston perussääntöjä eli pitää pystyä jakamaan kaupallisia versiota.
 
 Jotta nämä vapaudet olisivat todellisia pitää niiden olla pysyviä ja muuttumattomia tulevaisuudessakin, muuten ohjelmisto ei kata määritelmän vaatimuksia.

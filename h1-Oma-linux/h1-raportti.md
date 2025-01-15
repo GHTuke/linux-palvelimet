@@ -32,12 +32,44 @@ Free Software Foundation (FSF) (Free Software Foundation, Inc. 2024) määrittel
 - Vapaa ohjelmisto (Free software) ja avoin lähde (Open source) eivät tarkoita samaa.
 
 ## a - Oman linuxin asennus virtuaalikoneelle
+Harjoitus seuraa Tero Karvisen ohjeita: https://terokarvinen.com/2021/install-debian-on-virtualbox/
 Harjoitus ajankohta: 2025-01-15
 
 Ympäristö: 
 - Windows 11 Home v. 23H2
 - AMD Ryzen 7 6800H
 - RAM 16 Gt
+- VirtualBox v. 7.1.4
+
+### Debian live ISO
+Aluksi latasin viimeisimmän vakaan (Stable) Debianin live imagen sivulta https://www.debian.org/CD/live/ .
+Versio 12.9.0 Amd64 Xfce
+
+### VirtualBox virtuaalikoneen luonti
+
+VirtualBoxissa valitsin ylävalikosta Machine -> New
+TÄHÄN KUVA VM-luonti
+Aunneeseen ikkunaan "Virtual machine Name and Operating System" kirjasin nimen, valitsin tallennuskansion sekä valitsin tyypiksi Linux ja Debian 64-bit.
+Tästä eteenpäin "Next".
+
+Aukesi "Hardware" ikkuna johon kirjasin Base memory kohtaan 4000 Mb, kertoo siis RAMin määrän. Tähän olisi voinut kirjata 4096 Mb, meni itseltä hieman liian automaatiolla.
+TÄHÄN KUVA VM-Hardware
+Tästä taas eteenpäin "Next".
+
+Seuraavaksi siirryttiin "Virtual Hard disk" ikkunaan.
+TÄHÄN KUVA VM-harddisk
+Valitsin Create a Virtual Hard disk now ja asetin levykkeen kooksi 40 Gb.
+Muut asetukset Defaultilla.
+Eteenpäin taas "Next".
+
+Tässä vaiheessa tuli tietojen koonti ikkuna, josta VM image luotiin painamalla "Finish"
+
+Nyt VirtualBoxissa näkyi vasemmassa reunassa uusi Virtuaalikone ja sitä painamalla saa näkyviin koneen tiedot.
+TÄHÄN KUVA VM-tiedot
+Yleisiä tietoja asioista, joita aiemmin asetin virtuaalikonetta luodessa.
+Vasemmassa laidassa myös näkyy "Powered Off", mikä kertoo virtuaalikoneen nykytilan. Eli tällä hetkellä kone oli poissa päältä.
+Virtuaalikoneen tietojen yläosassa kohta "Settings", josta päästiin eteenpäin tutkimaan asetuksia.
+
 
 ## Lähteet
 

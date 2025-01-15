@@ -32,8 +32,15 @@ Free Software Foundation (FSF) (Free Software Foundation, Inc. 2024) määrittel
 - Vapaa ohjelmisto (Free software) ja avoin lähde (Open source) eivät tarkoita samaa.
 
 ## a - Oman linuxin asennus virtuaalikoneelle
+Harjoitus ajankohta: 2025-01-15
+
+Ympäristö: 
+- Windows 11 Home v. 23H2
+- AMD Ryzen 7 6800H
+- RAM 16 Gt
 
 ## Lähteet
 
 Free Software Foundation, Inc(FSF). 2024-01-01. What is Free Software?. https://www.gnu.org/philosophy/free-sw.html
+
 Karvinen, Tero. 2006-06-04. Raportin kirjoittaminen. https://terokarvinen.com/2006/raportin-kirjoittaminen-4/

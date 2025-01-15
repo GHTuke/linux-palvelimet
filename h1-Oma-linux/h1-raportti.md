@@ -82,6 +82,7 @@ Kun Debian Live ISO oli valittu alhaalta "Ok" tallensi ja palasi takaisin Virtua
 Seuraavaksi tuplaklikkaamalla vasemmassa reunassa olevaa Virtuaalikonetta kone boottaa.\
 TÄHÄN KUVA VM-tiedot
 
+### Uuden virtuaalikoneen testaus
 Virtuaalikone käynnistyi ja aukesi valikko, josta voi valita Boot tavan.\
 TÄHÄN KUVA VM-bootmenu
 Valitsin Live system (amd64).\
@@ -93,6 +94,7 @@ TÄHÄN KUVA VM-applications
 Tässä tapauksessa testain avaamalla "Web browser" ja Firefoxin auettua siirryin osoitteeseen terokarvinen.com.\
 TÄHÄN KUVA VM-firefoxTeroKarvinenCom
 
+### Debianin uudelleenasennus
 Siirrytään asentamaan Debian levyltä, jonka aiemmin lisäsin Virtuaaliseen levyasemaan.\
 TÄHÄN kuva VM-Desktop
 Työpöydältä valitaan "Install Debian" tuplaklikkaamalla.
@@ -130,6 +132,44 @@ Aukeaa Summary ikkuna.\
 Tästä näkyi asennuksen tiedot.\
 TÄHÄN KUVA VM-kooste
 "Install" oikealta alhaalta lähtee asentamaan käyttöjärjestelmää uudestaan.
+
+Asennuksen jälkeen ikkuna, josta näkyi "All Done" viesti.\
+Defaulttina "Restart Now"\
+TÄHÄN KUVAN VM-debianInstallerRdy
+Eteenpäin "Done" oikeasta alareunasta
+
+### Debianin ohjelmistojen päivittäminen ja palomuuri
+Rebootin jälkeen aukeaa "Login" ikkuna, aiemmin asetetuilla käyttäjänimellä ja salasanalla pääsee sisälle.\
+TÄHÄN KUVA VM-debianLogin
+
+Tämän jälkeen testasin avaamalla "Applications" valikon kautta taas Web browserin. Firefox aukesi ja "Google.com" aukesi normaalisti.
+
+Työpöydän alaosasta "Terminal" auki yhdellä klikkauksella.\
+Päivitin application managerin listaa mahdollisista ohjelmista.\
+"sudo apt-get update" päivitti listan, muutaman kirjoitusvirheellisen salasana syötön jälkeen.\
+TÄHÄN KUVA VM-debianTerminal
+
+Seuraavaksi päivitin Debianin ohjelmistot.\
+"sudo apt-get -y dist-upgrade" aloitti suoraan päivityksen.\
+TÄHÄN KUVA VM-debianDistUpgrade
+Hetken päivittelyn jälkeen kaikki oli päivitetty.\
+Päivitysten jälkeen seuravaat komennot asensivat ja käynnistivät palomuurin.\
+"sudo apt-get -y install ufw"\
+"sudo ufw enable"\
+TÄHÄN KUVA VM-debianFirewall
+Terminal ilmoittaa, että pitää käynnistää kone uudestaan.
+
+Työpöydältä "Applications" -> "Log out" -> "Restart"\
+TÄHÄN KUVA VM-debianRestart
+Virtuaalikone käynnistyi uudelleen ja kun login tiedot oli annettu kaikki toimi normaalisti.\
+TÄHÄN KUVA VM-debianReddit
+
+### Resoluution korjaus
+![VM-guestAvaus](https://github.com/user-attachments/assets/155153e3-0f6d-422c-8ad7-aa584c839038)
+
+Avataan kohdasta "Application" -> "File Manager" ja valitaan reunavalikosta VBox, jotta voidaan tarkistaaa polku ylhäältä osoitepalkista.\
+
+
 
 
 ## Lähteet

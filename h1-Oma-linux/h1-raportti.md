@@ -264,6 +264,17 @@ Tässä valmiin koneen työpöydästä vielä kuva.
 Harmillista kyllä kuvassa näkyvä DoomPDF ei toimi kuin Chromium pohjaisilla selaimilla. Joten rikkinäinen PDF, mutta muuten kaikki toimii.\
 Kyseinen PDF normaalisti pyörittäisi klassikko peli Doomia suoraan PDF:llä.
 
+### Snapshot
+19.05
+
+Lopulta otin vielä valmiista asennuksesta Snapshotin, jotta tarvittaessa voi palauttaa tähän pisteeseen tai luoda uusia virtuaalikoneita samoilla asetuksilla.
+
+![VM-snapshot](https://github.com/user-attachments/assets/9eb52697-8e15-4252-aa36-1b1307e19ec9)
+
+VirtualBox ohjelmasta valitsin luodun koneen kohdalta kolmea pistettä painamalla alivalikosta kohdan "Snapshot".\
+Aukesi kuvassa näkyvä ikkuna, jonka yläreunassa kohdasta "Take" voi ottaa Snapshotin kun virtuaalikone on päällä.\
+Tietoja ei tarvinnut antaa kuin Snapshotin nimi ja selitys.
+
 ## Lähteet
 
 Free Software Foundation, Inc(FSF). 2024-01-01. What is Free Software?. https://www.gnu.org/philosophy/free-sw.html

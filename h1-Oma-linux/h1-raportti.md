@@ -168,8 +168,25 @@ TÄHÄN KUVA VM-debianReddit
 ![VM-guestAvaus](https://github.com/user-attachments/assets/155153e3-0f6d-422c-8ad7-aa584c839038)
 
 Avataan kohdasta "Application" -> "File Manager" ja valitaan reunavalikosta VBox, jotta voidaan tarkistaaa polku ylhäältä osoitepalkista.\
+"cd /media/tuke/VBox*"\
+"ls"\
+Komennot avasivat GuestAdditionsia varten Terminaaliin kansiosta löytyvät ohjelmat.\
+"sudo bash VBoxLinuxAdditions.run" ajaa VBox asennuksen.\
+![VM-guestVirhe](https://github.com/user-attachments/assets/48c92e28-00fe-4bd2-849c-f9ade994fc8d)
 
+Ajon jälkeen tuli virheilmoitus, joka ohjeistaa käynnistämään uudelleen.\
+![VM-displaySettings](https://github.com/user-attachments/assets/a7cc8b77-f75c-438c-8867-5769e97a7122)
 
+Uudelleen käynnistyksen jälkeen "Applications" valikosta "Settings" -> "Display" ja pystyi asettamaan uuden resoluution.\
+Aukeaa ikkuna, josta voi valita eri resoluutioita.\
+![VM-Resolution](https://github.com/user-attachments/assets/326b63fc-66ea-44da-911f-47109e789b51)
+
+Testasin maksimi asetuksella 2560x1600. Aiheutti vain mustan näytön, mutta valintaa en hyväksynyt aikamääreen sisällä joten muutos otettiin takaisin.\
+1920x1080 toimii itsellä hyvin.
+
+### Snapshot
+Tässä valmiista koneesta vielä kuva.
+![VM-debianValmis](https://github.com/user-attachments/assets/ed041a59-9107-4dbe-b133-9a299e59b5a1)
 
 
 ## Lähteet
@@ -177,3 +194,5 @@ Avataan kohdasta "Application" -> "File Manager" ja valitaan reunavalikosta VBox
 Free Software Foundation, Inc(FSF). 2024-01-01. What is Free Software?. https://www.gnu.org/philosophy/free-sw.html
 
 Karvinen, Tero. 2006-06-04. Raportin kirjoittaminen. https://terokarvinen.com/2006/raportin-kirjoittaminen-4/
+
+Karvinen, Tero. 2024-09-26. Install Debian on VirtualBox. https://terokarvinen.com/2021/install-debian-on-virtualbox/

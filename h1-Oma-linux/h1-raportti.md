@@ -6,18 +6,22 @@
 Pohjateksti: https://terokarvinen.com/2006/raportin-kirjoittaminen-4/
 
 - Toistettavuus
+
     Suositeltavaa merkitä mahdollisimman tarkat tiedot laitteesta ja ajasta jolloin harjoituksen suorittaa. Tällä tavalla vianselvittäminen on mielekkäämpää ja virheiden toistettavuutta voidaan tarkistaa tarvittaessa. (Karvinen, T. 2006)
 
 - Täsmällisyys
+
     Merkkaa käytetyt komennot ja napinpainallukset, ja mitä näistä tapahtui (esim. onnistuiko vai eikö). Kirjaa ylös miten testasit, jos jokin ei toiminut. Johtuuko vika työkaluista kuten ohjelmista vai raudasta, vaikuttaa virheilmoitusten edistämiseen. Kirjoita "mitä teit" älä "mitä tulen tekemään", eli imperfektissä. (Karvinen, T. 2006)
 
 - Helppolukuisuus ja lähdeviittaukset
+
     Väliotsikot luovat rakennetta. Kirjoita huolellista tekstiä ja pyri minimoimaan kirjoitusvirheet. Merkkaa lähteet, osoittaa perehtyneisyyttä ja kreditoi alkuperäisen tekstin luojia. (Karvinen, T. 2006)
 
 ### Free software
 Pohjateksti: https://www.gnu.org/philosophy/free-sw.html
 
 Free Software Foundation (FSF) (Free Software Foundation, Inc. 2024) määrittelemät 4 vapautta ohjelmistoille.
+
   0) Vapaus käyttää ohjelmistoa miten haluaa, mihin vain käyttötapaukseen.
   1) Vapaus opiskella miten ohjelmisto toimii, ja sen muokkaus jotta se toimii niin kuin itse haluat.
   2) Vapaus jakaa kopioita toisille.

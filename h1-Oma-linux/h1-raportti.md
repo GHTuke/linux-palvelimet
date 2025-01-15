@@ -126,7 +126,7 @@ Vasemmasta ylälaidasta "Applications" kohdasta voi avata valmiina olevia ohjelm
 
 ![VM-applications](https://github.com/user-attachments/assets/888a433b-fa9e-42da-aafc-44113732b791)
 
-Tässä tapauksessa testain avaamalla "Web browser" ja Firefoxin auettua siirryin osoitteeseen terokarvinen.com.
+Tässä tapauksessa testasin avaamalla "Web browser" ja Firefoxin auettua siirryin osoitteeseen terokarvinen.com.
 
 ![VM-firefoxTeroKarvinenCom](https://github.com/user-attachments/assets/05e27fbc-3e53-447e-9421-7b0ab1376e76)
 
@@ -180,7 +180,7 @@ Defaulttina automaatti kirjautuminen poissa päältä.
 Eteenpäin kohdasta "Next".
 
 Aukeaa Summary ikkuna.\
-Tästä näkyi asennuksen tiedot.\
+Tästä näkyi asennuksen tiedot.
 
 "Install" oikealta alhaalta lähtee asentamaan käyttöjärjestelmää uudestaan.
 
@@ -218,7 +218,7 @@ Seuraavaksi päivitin Debianin ohjelmistot.\
 Hetken päivittelyn jälkeen kaikki oli päivitetty.\
 Päivitysten jälkeen seuravaat komennot asensivat ja käynnistivät palomuurin.\
 "sudo apt-get -y install ufw"\
-"sudo ufw enable"\
+"sudo ufw enable"
 
 Terminal ilmoittaa, että pitää käynnistää kone uudestaan.
 
@@ -261,7 +261,8 @@ Tässä valmiin koneen työpöydästä vielä kuva.
 
 ![VM-debianValmis](https://github.com/user-attachments/assets/a059a4ec-840a-4f1c-86b8-a013bab6f29d)
 
-Harmillista kyllä kuvassa näkyvä DoomPDF ei toimi kuin Chromium pohjaisilla selaimilla. Joten rikkinäinen PDF, mutta muuten kaikki toimii.
+Harmillista kyllä kuvassa näkyvä DoomPDF ei toimi kuin Chromium pohjaisilla selaimilla. Joten rikkinäinen PDF, mutta muuten kaikki toimii.\
+Kyseinen PDF normaalisti pyörittäisi klassikko peli Doomia suoraan PDF:llä.
 
 ## Lähteet
 

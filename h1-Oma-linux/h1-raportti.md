@@ -43,6 +43,7 @@ Ympäristö:
 
 ### Debian live ISO
 Aluksi latasin viimeisimmän vakaan (Stable) Debianin live imagen sivulta https://www.debian.org/CD/live/ .
+
 Versio 12.9.0 Amd64 Xfce
 
 ### VirtualBox virtuaalikoneen luonti
@@ -69,6 +70,66 @@ TÄHÄN KUVA VM-tiedot
 Yleisiä tietoja asioista, joita aiemmin asetin virtuaalikonetta luodessa.
 Vasemmassa laidassa myös näkyy "Powered Off", mikä kertoo virtuaalikoneen nykytilan. Eli tällä hetkellä kone oli poissa päältä.
 Virtuaalikoneen tietojen yläosassa kohta "Settings", josta päästiin eteenpäin tutkimaan asetuksia.
+
+Setting -> Storage kohdasta sai auki tallennuslaitteiden asetukset.
+TÄHÄN KUVA VM-settings-storage
+Valitsin Controller: IDE kohdasta "Empty" merkatun kohdan.
+Oikeassa reunassa kohtaan "Optical Drive" IDE secondary device.
+Pienestä levyn kuvasta painaessa aukesi valikko, josta pystyi valitsemaan Virtuaali levyasemalle aiemmin ladatun Debian live ISOn.
+TÄHÄN KUVA VM-storage-valinta
+Kun Debian Live ISO oli valittu alhaalta "Ok" tallensi ja palasi takaisin Virtuaalikoneen tietoihin.
+
+Seuraavaksi tuplaklikkaamalla vasemmassa reunassa olevaa Virtuaalikonetta kone boottaa.
+TÄHÄN KUVA VM-tiedot
+
+Virtuaalikone käynnistyi ja aukesi valikko, josta voi valita Boot tavan.
+TÄHÄN KUVA VM-bootmenu
+Valitsin Live system (amd64).
+Käynnistyminen alkoi ja hetken päästä oli Debianin työpöytä auki.
+TÄHÄN KUVA VM-desktop
+
+Vasemmasta ylälaidasta "Applications" kohdasta voi avata valmiina olevia ohjelmia.
+TÄHÄN KUVA VM-applications
+Tässä tapauksessa testain avaamalla "Web browser" ja Firefoxin auettua siirryin osoitteeseen terokarvinen.com.
+TÄHÄN KUVA VM-firefoxTeroKarvinenCom
+
+Siirrytään asentamaan Debian levyltä, jonka aiemmin lisäsin Virtuaaliseen levyasemaan.
+TÄHÄN kuva VM-Desktop
+Työpöydältä valitaan "Install Debian" tuplaklikkaamalla.
+
+Aukeaa Debian installer, default kielenä "American English" ei tarvinnut vaihtaa.
+TÄHÄN KUVA VM-debianInstaller
+Eteenpäin valitsemalla "Next".
+
+Seuraavksi valitaan sijainti tiedot kellonaikaa sekä numerointia varten.
+TÄHÄN KUVA VM-debianLocation
+Eteenpäin kohdasta "Next".
+
+Aukeaa Näppäimistön asetusten valinta.
+Defaulttina näppäinten asettelu "American english" muodossa.
+Vaihdoin "Finnish" ja testasin alhaalla olevaan laatikkoon, että ääkköset toimivat.
+TÄHÄN KUVA VM-debianKeyboard
+Eteenpäin kohdasta "Next".
+
+Aukeaa Partitions asetukset.
+Ylhäältä voisi valita mitä kovalevyä käsitellään, mutta kyseisessä virtuaalikoneessa vain yksi, joten automaattisesti oikea levy kyseessä.
+Tästä valitsin "Erase Disk", jotta vanhan käyttöjärjestelmän tiedot poistetaan kokonaan.
+Muihin asetuksiin ei tarvinnut koskea. Defaultina "Boot loader location" oli Master boot record.
+TÄHÄN KUVA VM-partitions
+Eteenpäin kohdasta "Next".
+
+Aukeaa Users asetukset.
+Nimeksi asetin oman nimen.
+Login nimi pienellä "tuke".
+Koneen nimeksi "DebianTest".
+Defaulttina automaatti kirjautuminen poissa päältä.
+TÄHÄN KUVA VM-debianUser
+Eteenpäin kohdasta "Next".
+
+Aukeaa Summary ikkuna.
+Tästä näkyi asennuksen tiedot.
+TÄHÄN KUVA VM-kooste
+"Install" oikealta alhaalta lähtee asentamaan käyttöjärjestelmää uudestaan.
 
 
 ## Lähteet

@@ -262,7 +262,7 @@ Tässä valmiin koneen työpöydästä vielä kuva.
 ![VM-debianValmis](https://github.com/user-attachments/assets/a059a4ec-840a-4f1c-86b8-a013bab6f29d)
 
 Harmillista kyllä kuvassa näkyvä DoomPDF ei toimi kuin Chromium pohjaisilla selaimilla. Joten rikkinäinen PDF, mutta muuten kaikki toimii.\
-Kyseinen PDF normaalisti pyörittäisi klassikko peli Doomia suoraan PDF:llä.
+Kyseinen PDF normaalisti pyörittäisi klassikko peli Doomia suoraan PDF:llä. Löytyy osoitteesta: https://doompdf.pages.dev/doom.pdf.
 
 ### Snapshot
 19.05

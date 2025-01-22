@@ -1,3 +1,14 @@
 # H2 - Komentaja Pingviini
 
 Tässä työkirjassa toteutan kurssin "Linux palvelimet" tehtävää H2-Komentaja Pingviini, jossa suoritetaan erilaisia komentokehote komentoja aiemmin toteutetussa virtuaalikoneelle asennetussa Debian Linuxissa.
+
+
+
+Host specs:
+
+    Windows 11 Home v. 23H2
+    AMD Ryzen 7 6800H
+    RAM 16 Gt
+    VirtualBox v. 7.1.4
+
+Virtual specs:

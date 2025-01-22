@@ -31,6 +31,7 @@ Virtual specs:
     Debian amd64 12(bookworm)
     VRAM 128MB
     RAM 4 Gt
+    VHarddisk 40GB
 
 Alkuun varmistin pakettihallinnan ajankohtaisuuden ajamalla Terminaalissa komennon:\
    $ sudo apt-get update

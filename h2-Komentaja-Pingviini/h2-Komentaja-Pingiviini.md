@@ -1,9 +1,10 @@
 # H2 - Komentaja Pingviini
 
 Tässä työkirjassa toteutan kurssin "Linux palvelimet" tehtävää H2-Komentaja Pingviini, jossa suoritetaan erilaisia komentokehote komentoja aiemmin toteutetussa virtuaalikoneelle asennetussa Debian Linuxissa (https://github.com/GHTuke/linux-palvelimet/blob/main/h1-Oma-linux/h1-raportti.md).\
-Alkuun tiivistetään pääpiirteitä Tero Karvisen webbikirjoituksesta "Command Line Basics Revisited" (https://terokarvinen.com/2020/command-line-basics-revisited/).
+Alkuun tiivistetään pääpiirteitä Tero Karvisen webbikirjoituksesta "Command Line Basics Revisited".
 
 ## x - Tiivistelmä
+Kerättynä muutamia pääpirteitä Tero Karvisen webbikirjoituksesta https://terokarvinen.com/2020/command-line-basics-revisited/.
 
 -Komentokehote on kestänyt ajantestin ja on ollut olemassa jo kauemmin kuin internet tai eri käyttöjärjestelmät.\
 -/home/USERNAME/ tärkeä hakemisto, koska se on ainut minne käyttäjä USERNAME voi tallentaa pysyvästi dataa.\
@@ -12,9 +13,11 @@ Alkuun tiivistetään pääpiirteitä Tero Karvisen webbikirjoituksesta "Command
     * Ohjelmistojen asennukset\
     * Ohjelmistojen poistaminen\
     * Käyttäjien luonti\
-    * Oikeuksien hallinointi\
+    * Oikeuksien hallinointi
 
 ## Komentokehote
+
+Localtime: 22-01-2025 12.35
 
 Host specs:
 
@@ -30,9 +33,10 @@ Virtual specs:
     RAM 4 Gt
 
 Alkuun varmistin pakettihallinnan ajankohtaisuuden ajamalla Terminaalissa komennon:\
-   $ sudo apt-get update\
+   $ sudo apt-get update
 
 ### a - Micro
+Localtime: 12.35
 
 Micro on terminaalipohjainen tekstikäsittelijä, se oli helppo ladata komennoilla:\
    $ sudo apt-get install micro\
@@ -41,6 +45,7 @@ Jonka jälkeen sitä pystyi alkaa käyttämään suoraan terminaalista komennoll
 ![Micro_asennus](https://github.com/user-attachments/assets/e537e729-6ece-4d75-9027-3b07df2a58f3)
 
 ### b - Apt
+Localtime: 13.00
 
 Valitsin asennettaviksi työkaluiksi:\
    *htop - prosessi seurantaa\
@@ -56,6 +61,7 @@ Täältä löytyy asentamista varten kaikkea muutakin hyödyllistä: https://lin
 Poistuminen Vim:istä komennolla: :q+ENTER. Muistakaa painaa ESC, jotta pääsee antamaan komentoja.
 
 ### c - FHS
+Localtime: 13.20
 
 Root:iin pääsi käsiksi komennolla:\
    $ cd /\
@@ -69,12 +75,13 @@ Tärkeitä kansiota joihin pääsee käsiksi cd /*Polku, jos lähtee Root:ista l
 ![hakemistoja](https://github.com/user-attachments/assets/118c53ad-f4c0-4f17-8792-a99a4b336b4c)
 
 ### d - The friendly M
+Localtime: 13.50
 
 Grep:illä pystyy hakemaan tiedostoista rivejä tai ympäröiviä rivejä merkkijonojen perusteella.\
 Käytin grep:iä tarkentamaan komentoa:\
    $ apt-cache search dungeon\
    $ apt-cache search dungeon|grep nethack\
-Tällä tavalla putkitettuna suorittaa grep sille syötetyn tiedon perusteella rivihaun, etsien sanaa "nethack". Poistaa tässä tapauksessa hausta kaikki ohjelmistot joiden nimessä ei ole kyseistä sanaa.\
+Tällä tavalla putkitettuna suorittaa grep sille syötetyn tiedon perusteella rivihaun, etsien sanaa "nethack". Poistaa tässä tapauksessa hausta kaikki ohjelmistot joiden nimessä ei ole kyseistä sanaa.
 
 Loin uuden tekstitiedoston polulla /home/tuke/jokutesti/tamatesti, johon kirjoitin "etsi tämä teksti" käyttäen grep:iä komennolla:\
    $ grep -r "etsi tämä teksti" /home/tuke\
@@ -95,21 +102,24 @@ Palauttaa esimerkiksi niin paljon ladattavia ohjelmistoja, että tällä ei tee 
 Suorittaa saman haun, jonka jälkeen asettaa riveille numeroinnin (nl) ja sen jälkeen avaa ne muodossa, jossa sivuja on helppo käydä läpi (less).
 
 ### f - Rauta
+Localtime: 14.00
 
 ![lshwShortSanitize](https://github.com/user-attachments/assets/fa366356-8f9d-497f-84e1-0c77296c8a40)
 
 Asentamalla lshw komennolla $ sudo apt-get install lshw, sai käyttöön lshw työkalun, joka listaa koneen tietoja.\
 Kysessää virtuaalikone, joka on luotu virtualboxilla, ja tämä näkyi jonkun verran syötteessä mm. disk (tallennustilaa) on VBOX HARDDISK sekä hiiren input on VirtualBox mouse integration.\
-Jonkun verran löytyi Host koneen tietoja myös tätä kautta. Esimerkkinä Prosessori sekä network, jotka ottavat tietonsa suoraan Host koneesta.\
+Jonkun verran löytyi Host koneen tietoja myös tätä kautta. Esimerkkinä Prosessori sekä network, jotka ottavat tietonsa suoraan Host koneesta.
 
 ### g - Lokit
+Localtime: 14.15
 
 ![lokit](https://github.com/user-attachments/assets/acbede54-5c8e-4d98-9e1d-2069b4756750)
 
 Tässä tapauksessa avasin lokeja komennolla $ journalctl, eli ilman suurempia oikeuksia. Näyttää siis yleisempiä tapahtumia koneelta.\
-Ympyröitynä aikaisemmin suoritetun lshw asennus sekä koneen tietojen tarkastelu sen kautta. Lokit näyttävät, missä komento suoritettiin (PWD), käyttäjä tässä tapauksessa "root", koska suoritettiin sudo oikeuksilla. Sekä komento, joka on suoritettu. Näkyy myös kellonajat suorituksen aloitukselle, sekä lopettamiselle.\
+Ympyröitynä aikaisemmin suoritetun lshw asennus sekä koneen tietojen tarkastelu sen kautta. Lokit näyttävät, missä komento suoritettiin (PWD), käyttäjä tässä tapauksessa "root", koska suoritettiin sudo oikeuksilla. Sekä komento, joka on suoritettu. Näkyy myös kellonajat suorituksen aloitukselle, sekä lopettamiselle.
 
 ### h - Micron plugin
+Localtime: 14.30
 
 Päätin asentaa Palettero pluginin Microon.
 $ man micro komennon kautta oli helppo tarkistaa kuinka plugineja pystyy microon asentamaan. Micron avattua ctrl+E avaa micron komentosyötteen, johon saa komennolla "plugin available" näkyviin saatavilla olevat pluginit. Komento "plugin install palettero" asentaa pluginin ja "plugin list" näytti mitä plugineja oli asennettuna.\
@@ -123,6 +133,26 @@ Muutaman asennuksen, päivityksen, terminaalin uudelleen käynnistyksen jälkeen
    $ rm -rf palettero\
 Asennettua paletteron uudestaan ja micron uudelleenkäynnistyksen jälkeen ilmestyy komentosyötteeseen teksti "First run, Palettero running 'updatemenu'...".\
 Kyseinen updatemenu ei 10 minuutin ajon jälkeen ollut päivittynyt, joten lähdin etsimään uutta ratkaisua.
+
+Paused: Localtime 15.15\
+Continued: Localtime 19.30
+
+Pienen tauon jälkeen tulin käsittelemään ongelmaa uudelleen ja tarkistettua paletteron github (https://github.com/terokarvinen/palettero) tutun nimiseltä henkilöltä tuli vastaan tarve ohjelman "fzf" asentamiselle. Tämän asennuksen suoritettua onnistui micron sisällä avata "palettero --help" komennolla komentopankki, josta pystyi katsomaan toimivia komentoja.
+
+Säädin Paletteron kautta komennolla "set colorscheme simple" micron taustavärin mustaksi ja tekstin valkoiseksi. Samalla vaihtui rivinumerointi punaiseksi, mistä ei lukenut erikseen komentopankissa.\
+![paletteroKorjattu](https://github.com/user-attachments/assets/e07a2ff5-12ef-432c-a696-3451ebb64c03)
+
+Myös "replaceall foo BAR" komentoa kokeiltu ja muutti jokaisen tiedostosta löytyvän foo:n BAR:iksi, toimii siis sananvaihtajana.
+
+## Nethack
+
+Ja koska Nethack:iä on tullut lapsena pelattuna niin paljon oli pakko tilaisuuden tullen vielä asentaa se.\
+   $ apt-cache search nethack   etsii nethack nimellä ohjelmia\
+   $ sudo apt-get -y install nethack-console\
+   $ dpkg --listfiles nethack-console    listaa nethack-console kansiot ja niiden polut\
+   $ cd usr/lib/games/nethack\
+   $ nethack
+![NetHack](https://github.com/user-attachments/assets/3902eed8-9f76-4059-9572-989931e58b75)
 
 
 ## Lähteet

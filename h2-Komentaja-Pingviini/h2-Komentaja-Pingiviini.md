@@ -34,7 +34,7 @@ Virtual specs:
     VHarddisk 40GB
 
 Alkuun varmistin pakettihallinnan ajankohtaisuuden ajamalla Terminaalissa komennon:\
-```bash
+```
    $ sudo apt-get update
 ```
 

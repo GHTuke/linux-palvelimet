@@ -10,10 +10,10 @@ Kerättynä muutamia pääpirteitä Tero Karvisen webbikirjoituksesta https://te
 -/home/USERNAME/ tärkeä hakemisto, koska se on ainut minne käyttäjä USERNAME voi tallentaa pysyvästi dataa.\
 -/etc/ alaisuudesta löytyy kaikki systeemin asetukset plain tekstinä.\
 -Suositeltavaa toteuttaa minimum privilege-mallia ja käyttää "sudo" komentoja ainoastaan kun niitä tarvitaan kyseisen komennon ajamiseen.\
-    * Ohjelmistojen asennukset\
-    * Ohjelmistojen poistaminen\
-    * Käyttäjien luonti\
-    * Oikeuksien hallinointi
+       * Ohjelmistojen asennukset\
+       * Ohjelmistojen poistaminen\
+       * Käyttäjien luonti\
+       * Oikeuksien hallinointi
 
 ## Komentokehote
 
@@ -34,7 +34,9 @@ Virtual specs:
     VHarddisk 40GB
 
 Alkuun varmistin pakettihallinnan ajankohtaisuuden ajamalla Terminaalissa komennon:\
+```bash
    $ sudo apt-get update
+```
 
 ### a - Micro
 Localtime: 12.35

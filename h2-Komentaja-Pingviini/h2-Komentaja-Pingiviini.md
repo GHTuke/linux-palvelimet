@@ -1,5 +1,7 @@
 # H2 - Komentaja Pingviini
 
+Tekijä: Tuukka Huovilainen
+
 Tässä työkirjassa toteutan kurssin "Linux palvelimet" tehtävää H2-Komentaja Pingviini, jossa suoritetaan erilaisia komentokehote komentoja aiemmin toteutetussa virtuaalikoneelle asennetussa Debian Linuxissa (https://github.com/GHTuke/linux-palvelimet/blob/main/h1-Oma-linux/h1-raportti.md).\
 Alkuun tiivistetään pääpiirteitä Tero Karvisen webbikirjoituksesta "Command Line Basics Revisited".
 
@@ -18,6 +20,7 @@ Kerättynä muutamia pääpirteitä Tero Karvisen webbikirjoituksesta https://te
 ## Komentokehote
 
 Localtime: 22-01-2025 12.35
+Muokattu: Localtime: 23-01-2025 12.10
 
 Host specs:
 
@@ -33,7 +36,7 @@ Virtual specs:
     RAM 4 Gt
     VHarddisk 40GB
 
-Alkuun varmistin pakettihallinnan ajankohtaisuuden ajamalla Terminaalissa komennon:\
+Alkuun varmistin pakettihallinnan ajankohtaisuuden ajamalla Terminaalissa komennon:
 ```
    $ sudo apt-get update
 ```
@@ -41,10 +44,14 @@ Alkuun varmistin pakettihallinnan ajankohtaisuuden ajamalla Terminaalissa komenn
 ### a - Micro
 Localtime: 12.35
 
-Micro on terminaalipohjainen tekstikäsittelijä, se oli helppo ladata komennoilla:\
-   $ sudo apt-get install micro\
-Jonka jälkeen sitä pystyi alkaa käyttämään suoraan terminaalista komennolla:\
+Micro on terminaalipohjainen tekstikäsittelijä, se oli helppo ladata komennoilla:
+```
+   $ sudo apt-get install micro
+```
+Jonka jälkeen sitä pystyi alkaa käyttämään suoraan terminaalista komennolla:
+```
    $ micro
+```
 ![Micro_asennus](https://github.com/user-attachments/assets/e537e729-6ece-4d75-9027-3b07df2a58f3)
 
 ### b - Apt
@@ -55,8 +62,10 @@ Valitsin asennettaviksi työkaluiksi:\
    *git - versio hallintaa\
    *vim - teksti editori\
    *cowsay - turha, mutta miksi ei. Lehmä sanoo mitä pyydät.\
-Asennukset linkittyivät helposti yhdeksi komennoksi:\
-   $ sudo apt-get install -y htop git vim cowsay\
+Asennukset linkittyivät helposti yhdeksi komennoksi:
+```
+   $ sudo apt-get install -y htop git vim cowsay
+```
 Kuten monen muunkin terminaali komennon kanssa pystyi useamman ohjelman nimeämään peräkkäin välilyönnillä erottaen, jolloin ne erotellaan eri "tiedostoiksi".\
 -y vastaa tarvittaessa automaattisesti kyllä asennuksen aikana tuleviin kysymyksiin.\
 Täältä löytyy asentamista varten kaikkea muutakin hyödyllistä: https://linuxize.com/post/how-to-use-apt-command/.\
@@ -66,42 +75,58 @@ Poistuminen Vim:istä komennolla: :q+ENTER. Muistakaa painaa ESC, jotta pääsee
 ### c - FHS
 Localtime: 13.20
 
-Root:iin pääsi käsiksi komennolla:\
-   $ cd /\
-Sieltä listaamalla sisällön:\
-   $ ls -F (-F lisää kansioiden perään / merkin selkeyden vuoksi)\
-Tärkeitä kansiota joihin pääsee käsiksi cd /*Polku, jos lähtee Root:ista liikkeelle:\
-   /home/username/ - käyttäjän omat kansiot\
-   /etc/ - Systeemin asetukset\
-   /media/ - Kiinni olevat mediat esim USB-tikut jne\
-   /var/log - Systeemin logit\
+Root:iin pääsi käsiksi komennolla:
+```
+   $ cd /
+```
+Sieltä listaamalla sisällön:
+```
+   $ ls -F (-F lisää kansioiden perään / merkin selkeyden vuoksi)
+```
+Tärkeitä kansiota joihin pääsee käsiksi cd /*Polku, jos lähtee Root:ista liikkeelle:
+```
+   /home/username/ - käyttäjän omat kansiot
+   /etc/ - Systeemin asetukset
+   /media/ - Kiinni olevat mediat esim USB-tikut jne
+   /var/log - Systeemin logit
+```
 ![hakemistoja](https://github.com/user-attachments/assets/118c53ad-f4c0-4f17-8792-a99a4b336b4c)
 
 ### d - The friendly M
 Localtime: 13.50
 
 Grep:illä pystyy hakemaan tiedostoista rivejä tai ympäröiviä rivejä merkkijonojen perusteella.\
-Käytin grep:iä tarkentamaan komentoa:\
-   $ apt-cache search dungeon\
-   $ apt-cache search dungeon|grep nethack\
+Käytin grep:iä tarkentamaan komentoa:
+```
+   $ apt-cache search dungeon
+   $ apt-cache search dungeon|grep nethack
+```
 Tällä tavalla putkitettuna suorittaa grep sille syötetyn tiedon perusteella rivihaun, etsien sanaa "nethack". Poistaa tässä tapauksessa hausta kaikki ohjelmistot joiden nimessä ei ole kyseistä sanaa.
 
-Loin uuden tekstitiedoston polulla /home/tuke/jokutesti/tamatesti, johon kirjoitin "etsi tämä teksti" käyttäen grep:iä komennolla:\
-   $ grep -r "etsi tämä teksti" /home/tuke\
+Loin uuden tekstitiedoston polulla /home/tuke/jokutesti/tamatesti, johon kirjoitin "etsi tämä teksti" käyttäen grep:iä komennolla:
+```
+   $ grep -r "etsi tämä teksti" /home/tuke
+```
 grep suoritti etsinnän tarkistaen kaikki /home/tuke kansiosta löytyvät alikansiot ja tekstitiedostot etsien vain riviä, jolta löytyy "etsi tämä teksti".\
 grep printtaa polun kyseiseen tiedostoon ja mitä kyseiseltä riviltä löytyy.
-Lisäsin vielä komentoon:\
-   $ grep -r -C 2 "etsi tämä teksti" /home/tuke\
+Lisäsin vielä komentoon:
+```
+   $ grep -r -C 2 "etsi tämä teksti" /home/tuke
+```
 Näin grep hakee myös etsittyä riviä ylempänä sekä alempana olevat 2 riviä hakuun.
 ![grep](https://github.com/user-attachments/assets/809fd69d-5b18-40b4-9b4c-a3e6e093db8c)
 
 ### e - Pipe
 
 Putkilla pystyy yhdistämään komentoja järjestyksessä syöttämällä | komentojen väliin.\
-Komento:\
-   $ apt-cache search python3\
-Palauttaa esimerkiksi niin paljon ladattavia ohjelmistoja, että tällä ei tee itsessään mitään. Muokkamalla komentoa voidaan selkeyttää määrää ja tehdä siitä helpommin läpikäytävä.\
-   $ apt-cache search python3|nl|less\
+Komento:
+```
+   $ apt-cache search python3
+```
+Palauttaa esimerkiksi niin paljon ladattavia ohjelmistoja, että tällä ei tee itsessään mitään. Muokkamalla komentoa voidaan selkeyttää määrää ja tehdä siitä helpommin läpikäytävä.
+```
+   $ apt-cache search python3|nl|less
+```
 Suorittaa saman haun, jonka jälkeen asettaa riveille numeroinnin (nl) ja sen jälkeen avaa ne muodossa, jossa sivuja on helppo käydä läpi (less).
 
 ### f - Rauta
@@ -131,9 +156,11 @@ $ man micro komennon kautta oli helppo tarkistaa kuinka plugineja pystyy microon
 Ongelmia tuli ja palettero ei tunnistanut versiotaan, väitti että päivityksiä ei tarvita ja versio oli merkattuna 0.0.0.\
 ![paletteroOngelma](https://github.com/user-attachments/assets/a3336c6e-022c-4df5-9137-03e292fb7712)
 
-Muutaman asennuksen, päivityksen, terminaalin uudelleen käynnistyksen jälkeen päädyin poistamaan pluginin.\
-   $ cd home/tuke/.config/micro/plug\
-   $ rm -rf palettero\
+Muutaman asennuksen, päivityksen, terminaalin uudelleen käynnistyksen jälkeen päädyin poistamaan pluginin.
+```
+   $ cd home/tuke/.config/micro/plug
+   $ rm -rf palettero
+```
 Asennettua paletteron uudestaan ja micron uudelleenkäynnistyksen jälkeen ilmestyy komentosyötteeseen teksti "First run, Palettero running 'updatemenu'...".\
 Kyseinen updatemenu ei 10 minuutin ajon jälkeen ollut päivittynyt, joten lähdin etsimään uutta ratkaisua.
 
@@ -149,12 +176,14 @@ Myös "replaceall foo BAR" komentoa kokeiltu ja muutti jokaisen tiedostosta löy
 
 ## Nethack
 
-Ja koska Nethack:iä on tullut lapsena pelattuna niin paljon oli pakko tilaisuuden tullen vielä asentaa se.\
-   $ apt-cache search nethack   etsii nethack nimellä ohjelmia\
-   $ sudo apt-get -y install nethack-console\
-   $ dpkg --listfiles nethack-console    listaa nethack-console kansiot ja niiden polut\
-   $ cd usr/lib/games/nethack\
+Ja koska Nethack:iä on tullut lapsena pelattuna niin paljon oli pakko tilaisuuden tullen vielä asentaa se.
+```
+   $ apt-cache search nethack   etsii nethack nimellä ohjelmia
+   $ sudo apt-get -y install nethack-console
+   $ dpkg --listfiles nethack-console    listaa nethack-console kansiot ja niiden polut
+   $ cd usr/lib/games/nethack
    $ nethack
+```
 ![NetHack](https://github.com/user-attachments/assets/3902eed8-9f76-4059-9572-989931e58b75)
 
 

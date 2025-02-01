@@ -32,6 +32,22 @@ Virtual specs:
     RAM 4 Gt
     VHarddisk 40GB
 
+Koska olin jo aiemmin vaihtanut Apachen default sivun palvelimelta, palautin alkuperäisen default sivun käyttöön tätä harjoitusta varten.\
+Helpompi esittää tapahtuvat muutokset tätä kautta.
+
+Alkuun komennot apachen asennuksesta index sivun luontiin asti, jonka jälkeen käydään tarkemmin läpi eri askeleet.
+
+```
+$ sudo apt-get update && sudo apt-get install apache 2
+$ sudoedit /etc/apache2/sites-available hattu.example.com.conf
+$ sudo a2ensite hattu.example.com
+$ sudo a2dissite 000-default.conf
+$ sudo systemctl restart apache2
+$ cd
+$ mkdir public_sites/hattu.example.com
+$ cd public_sites/hattu.example.com
+$ micro index.html
+```
 
 ### a - Webbipalvelin
 

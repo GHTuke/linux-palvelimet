@@ -2,6 +2,8 @@
 
 Tekijä: Tuukka Huovilainen
 
+* Pohjana Tero Karvinen 2025: Linux Palvelimet kurssi, http://terokarvinen.com
+
 Tässä työkirjassa suoritetaan Linux palvelimet -kurssin tehtävää "Hello web server", jossa asennetaan Apachen webbipalvelin ja otetaan se käyttöön Linuxissa. Käyttöönoton jälkeen muokataan hieman etusivua ja käydään läpi muutamia logeja matkanvarrelta. Tehtävän pohjana on käytetty Tero Karvisen webbikirjoitusta https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/. Alkuun pieni kooste kyseisestä webbikirjoituksesta sekä Apache Software Foundationin kirjoituksesta https://httpd.apache.org/docs/2.4/vhosts/name-based.html.
 
 ## x - Tiivistelmä
@@ -69,12 +71,15 @@ $ sudo tail -5 /var/log/apache2/access.log
 Sain näkyviin Apachen logeista viimeiset 5 riviä, tätä kautta pystyin tarkistamaan mitä tapahtui kun avasi selaimen kautta "localhost" sivun Apachen asennuksen jälkeen.\
 ![accessLogs](https://github.com/user-attachments/assets/d2dbe394-ef88-4153-840a-359ceb98876b)
 
-Viimeiset 3 riviä näyttäisi liittyvän samaan avaukseen kellonaikojen perusteella. Kaikki 3 riviä ovat "GET" pyyntöjä palvelimelle. Kaikki pyynnöt on myös lähetetty osoitteesta 127.0.0.1 koneen omasta IP-osoitteesta.\
-Ensimmäisellä avaukseen liittyvällä rivillä on GET pyyntö palvelimen juureen "/" käyttäen protokollaa "http/1.1", joka palautui koodilla 200 eli pyyntö onnistui, perässä oleva numero kertoo palautetun pyynnön suuruus bitteinä. Eli haki sivun. Mozilla osio kertoi vain millä selaimella pyyntö suoritettiin, tässä tapauksessa Firefox.\
-Toisella rivillä GET pyyntö hakea juuresta osoitteen kautta kuva "/icons/openlogo-75.png HTTP/1.1" Ja taas tuli vastaus 200 ja tiedoston koko bitteinä.\
+Viimeiset 3 riviä näyttäisi liittyvän samaan avaukseen kellonaikojen perusteella. Kaikki 3 riviä ovat "GET" pyyntöjä palvelimelle. Kaikki pyynnöt on myös lähetetty osoitteesta 127.0.0.1 koneen omasta IP-osoitteesta.
+
+Ensimmäisellä avaukseen liittyvällä rivillä on GET pyyntö palvelimen juureen "/" käyttäen protokollaa "http/1.1", joka palautui koodilla 200 eli pyyntö onnistui, perässä oleva numero kertoo palautetun pyynnön suuruus bitteinä. Eli haki sivun. Mozilla osio kertoi vain millä selaimella pyyntö suoritettiin, tässä tapauksessa Firefox.
+
+Toisella rivillä GET pyyntö hakea juuresta osoitteen kautta kuva "/icons/openlogo-75.png HTTP/1.1" Ja taas tuli vastaus 200 ja tiedoston koko bitteinä.
+
 Kolmannella rivillä on taas GET pyyntö hakea ikoni osoitteesta "/favicon.ico" tällä kertaa vastaus on 404 eli ei löytynyt resurssia.
 
-Login rivien selitykset löytyvät osoitteesta: https://httpd.apache.org/docs/2.4/logs.html.
+Lisätietoa logeista ja sivu, jonka pohjalta selitykset on luotu: https://httpd.apache.org/docs/2.4/logs.html.
 
 ### c - Etusivu
 Localtime: 13.20
@@ -166,6 +171,7 @@ Tässä vielä sivun koko koodi tekstimuodossa:
 Validointi testattu sivulla https://validator.w3.org/.
 
 ### f - curl
+Localtime: 14.20
 
 Komennoilla:
 ```
@@ -177,16 +183,60 @@ $ curl -I localhost   // HUOM! iso i ei pieni L
 Perus curl komento näyttää siis sivun raakadatan terminaalissa tekstimuodossa.\
 curl -I näyttää avatusta sivusta sen metatietoja. Tästä tärkeimpiä poimintoja:
 * HTTP/1.1 200 OK - Mikä protokolla ja vastauskoodi (200 OK)
-* Date: Sat, 01 Feb 2025 12:22:22 GMT - Päivämäärä ja kellonaika perus GMT muodossa
+* Date: Sat, 01 Feb 2025 12:22:22 GMT - Päivämäärä ja kellonaika GMT-aikavyöhykkeen mukaisesti
 * Server: Apache/2.4.62 (Debian) - Palvelimen käyttöjärjestelmä
 * Last-Modified: Sat, 01 Feb 2025 12:05:58 GMT - Koska viimeksi muokattu
 * Content-Type: text/html - Minkä tyyppistä tietoa on sivulla tässä tapauksessa tekstiä ja html notaatioita.
 
 ### o - Kaksi eri sivua
+Localtime: 19.15
 
+Alkuun avasin terminaalin kautta hosts-tiedoston muokattavaksi.
+```
+$ sudoedit /etc/hosts
+```
+Lisäsin ensimmäiselle riville, jossa luki alunperin kaikki osoitteet vain:
+```
+127.0.0.1 localhost
+```
+Kaikki osoitteet, jotka halusin nimellä ohjata samaan IP-osoitteeseen.\
+Tältä file näytti muokkauksen jälkeen.
+![hostsEdited](https://github.com/user-attachments/assets/fb2b17f7-005d-4b51-8766-770d48c4a9f4)
+
+Sen jälkeen muokkasin taas hattu.example.com.conf -tiedostoa, joka toimii tällä hetkellä VirtualHost ohjaimena.
+```
+$ sudoedit /etc/apache2/sites-available/hattu.example.com.conf
+
+<VirtualHost *:80>
+        ServerName foo.example.com
+        ServerAlias www.foo.example.com
+        DocumentRoot /home/tuke/public_sites/foo.example.com
+                <Directory /home/tuke/public_sites/foo.example.com>
+                Require all granted
+                </Directory>
+</VirtualHost>
+
+$ sudo systemctl restart apache2
+```
+VirtualHost tiedot syötin tiedostoon aikaisemman perään. Ja vielä Apachen uudelleenkäynnistys perään, jotta muutokset tulevat voimaan.
+![fooHattuAlku](https://github.com/user-attachments/assets/c6978d2d-2896-4ec3-8dae-c6c7c24a54ae)
+
+Tämän jälkeen loin uuden kansion uuden sivun polkuun ja sinne index.html -tiedoston eli
+```
+$ mkdir /home/tuke/public_sites/foo.example.com
+$ micro /home/tuke/public_sites/foo.example.com/index.html
+```
+Tässä vaiheessa molemmat osoitteet siis kuuntelevat osoitetta 127.0.0.1, mutta eri nimillä.
+![hattuFooMolemmat](https://github.com/user-attachments/assets/6cf7f349-5df0-4084-86a3-6a8be61de3c4)
+
+Molemmat avasivat omat sivunsa omilla osoitteillaan vaikka molemmilla on sama IP-osoite.
 
 ## Lähteet
 
 Karvinen, T. 10-04-2018. Name Based Virtual Hosts on Apache – Multiple Websites to Single IP Address. https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/.
 
-The Apache Software Foundation. s.a. Name-based Virtual Host Support. https://httpd.apache.org/docs/2.4/vhosts/name-based.html.
+The Apache Software Foundation 1. Access Control. https://httpd.apache.org/docs/2.4/howto/access.html.
+
+The Apache Software Foundation 2. Log Files.  https://httpd.apache.org/docs/2.4/logs.html.
+
+The Apache Software Foundation 3. Name-based Virtual Host Support. https://httpd.apache.org/docs/2.4/vhosts/name-based.html.

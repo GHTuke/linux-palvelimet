@@ -80,7 +80,7 @@ Login rivien selitykset löytyvät osoitteesta: https://httpd.apache.org/docs/2.
 Localtime: 13.20
 
 Lähdin luomaan uutta etusivua palvelimelle, Apachen default sivun tilalle.\
-Ensin syötin komennon:\
+Ensin syötin komennon:
 ```
 $ sudoedit /etc/apache2/sites-available/hattu.example.com.conf
 ```
@@ -167,7 +167,20 @@ Validointi testattu sivulla https://validator.w3.org/.
 
 ### f - curl
 
+Komennoilla:
+```
+$ curl localhost
+$ curl -I localhost   // HUOM! iso i ei pieni L
+```
+![curlHattu](https://github.com/user-attachments/assets/e5783dc3-5eb7-4c7f-a802-e5a6a09046e2)
 
+Perus curl komento näyttää siis sivun raakadatan terminaalissa tekstimuodossa.\
+curl -I näyttää avatusta sivusta sen metatietoja. Tästä tärkeimpiä poimintoja:
+* HTTP/1.1 200 OK - Mikä protokolla ja vastauskoodi (200 OK)
+* Date: Sat, 01 Feb 2025 12:22:22 GMT - Päivämäärä ja kellonaika perus GMT muodossa
+* Server: Apache/2.4.62 (Debian) - Palvelimen käyttöjärjestelmä
+* Last-Modified: Sat, 01 Feb 2025 12:05:58 GMT - Koska viimeksi muokattu
+* Content-Type: text/html - Minkä tyyppistä tietoa on sivulla tässä tapauksessa tekstiä ja html notaatioita.
 
 ### o - Kaksi eri sivua
 

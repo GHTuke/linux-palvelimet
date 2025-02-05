@@ -46,38 +46,49 @@ Virtual specs:
 
 Alkuun avasin upCloud palveluntarjoajan sivut osoitteesta: https://upcloud.com/. Etusivulta löytyikin ilmaisen trial version mainos, painoin tästä kokeilemaan.\
 Aukesi sivu, josta pystyi aloittamaan käyttäjän luomisen ilmaista trial versiota varten.
+
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudTrial.png width=600>
 
 Tässä vaiheessa siirryin eteenpäin ja piti syöttää käyttäjätunnus, salasana, puhelinnumero sekä maa. Kaikki näistä olivat pakollisia.
-![upCloudFinalize](https://github.com/user-attachments/assets/465ffff1-babf-4a87-9ca0-f6f7cdb8a00d)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudFinalize.png width=600>
 
 Tämän jälkeen pääsin käyttäjällä sisälle, tuli vahvistusviesti sähköpostiin ja sen avattuani pystyin varmentamaan käyttäjäni painamalla omalta etusivultani "Verify account".
-![upCloudVerify](https://github.com/user-attachments/assets/1ef2f93f-56eb-413b-8ed6-4be2e02d8017)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudVerify.png width=600>
 
 Varmentamista varten piti syöttää pankkikortin tiedot ja kun ne oli syötetty siirryin takaisin etusivulle, josta aloitin uuden serverin deploy prosessin valitsemalla "Deploy now".\
 Vaihtoehtoisesti voi vasemmanpuoleisesta valikosta valita "Servers" -> "Server list" ja avautuvalta sivulta "Deploy now".
-![upCloudServerDeploy](https://github.com/user-attachments/assets/2d33f0e2-ad3b-489c-b8e2-23b0c30291c5)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudServerDeploy.png width=600>
 
 Aukesi serverin luomista varten valikko. Ensimmäisenä piti valita lokaatio minne haluaa serverin sijoittaa. Itse valitsin FI-HEL1, lähinnä sen vuoksi, että kyseessä on vain harjoittelupalvelin. Parempi, että se sijaitsee lähellä latenssin vuoksi.
-![upCloudArea](https://github.com/user-attachments/assets/1f4b98c9-6a0c-4995-abde-3d55b98a0861)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudArea.png width=600>
 
 Sitten piti valita Plan, jolla edetään. Eri tasoilla eri hinnoittelu ja tasojen sisällä eri RAM ja kovalevy kokoja tarjolla. Itse valitsin halvimman 1CPU, 1GB RAM ja 10GB kovalevy, koska siinä kaikki tähän harjoitukseen tarvittava.
-![upCloudPlan](https://github.com/user-attachments/assets/70f249f4-8d54-4629-bee6-0c3f17b761ff)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudPlan.png width=600>
 
 Seuraavaksi olisi voinut vaikuttaa virtuaalikovalevyihin, luoda uusia jakoja tai valita salausta. Menin tässä vaiheessa perusasetuksilla, kun ei muuta tarvita.
-![upCloudStorage](https://github.com/user-attachments/assets/0dd3a439-09fe-4897-bb37-be57070dff5b)
 
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudStorage.png width=600>
+<img src= width=600>
 Sitten tuli ensimmäiset pelkät lisämyynnit, eli varmuuskopiointi. En ottanut tässä vaiheessa, kun ei sitä harjoituspalvelimelle tarvita ja muitakin ratkaisuja tarvittaessa löytyy.
-![upCloudBackup](https://github.com/user-attachments/assets/106bdcff-dd61-4328-90d8-46ee1ea5c900)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudBackup.png width=600>
 
 Sitten OS(Operating system) valinta, kohtalaisen helppo kun oma virtuaalikone, jolta tätä tulen käyttämään ja jota eniten käyttänyt on Debian 12. Valitsin siis saman kun oli valmiina tarjolla. Myös custom imagea olisi voinut käyttää luomiseen, mutta koska oma image olisi ollut myös Debian 12, mutta pienellä säädöllä jo niin puhdaspöytä oli parempi vaihtoehto.
-![upCloudOS](https://github.com/user-attachments/assets/6ba3669b-0239-4ed2-9eae-6d40dfdf960e)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudOS.png width=600>
 
 Seuraavaksi verkkovalintoihin, automaattisesti oli valittuina ipv4 ja ipv6 joista ipv4 osoitetta ainakin tarvitaan harjoituksessa, mutta myös ipv6 on hyvä olla. Utility network oli myös suoraan valittuna, jos olisin asettanut virtuaalipalvelimen useammalle lokaatiolle, tämä helpottaisi ja nopeuttaisi niiden välistä kommunikaatiota (https://upcloud.com/docs/products/networking/features/utility-network/). Tässä tapauksessa se on turha, mutta toisaalta ei aiheuta ongelmia joten jätin sen päälle kun oletusasetuksena oli.
-![upCloudNetwork](https://github.com/user-attachments/assets/5f384701-b024-44fc-8ec2-d4490f374c40)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudNetwork.png width=600>
 
 Sitten tuli lisävaihtoehtoja mm. metadata service jonka kautta pystyisi init templateilla luomaan suoraan asetuksia virtuaalipalvelimelle, jätin oletusasetukset päälle.
-![upCloudOptionals](https://github.com/user-attachments/assets/80dece05-fc2b-408f-9a0d-6e6051494342)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudOptionals.png width=600>
 
 Tässä vaiheessa tuli autentikointi, vaihtoehtoina oli omien valintojen takia auki ainoastaan SSH avaimella kirjautuminen. Kävin siis omalta virtuaalikoneelta hakemassa julkisen avaimen.
 ```
@@ -88,18 +99,22 @@ $cd /home/tuke # hyppäsin omaan kotivalikkoon
 $cd .ssh # avasi kansion, jossa avaimet ovat
 $micro id_rsa.pub # avasin micro tekstieditorissa JULKISEN avaimen eli .pub päätteisen, josta kopioin avaimen upcloud SSH salausta varten. HUOM! ei ikinä privaattiavainta muille.
 ```
-![sshPublic](https://github.com/user-attachments/assets/f7da625a-29e5-442f-9f2e-67d9d16bb9e6)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshPublic.png width=600>
 
 Avaimen syötettyä upCloudin autentikointi kohta näytti tältä.
-![upCloudSsh](https://github.com/user-attachments/assets/921f9584-1fc3-4659-84e5-bdfd30b19e37)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudSsh.png width=600>
 
 Enää jäljellä oli initialization scriptit ja server configuration. Scriptejä ei tarvinnut tässä vaiheessa, joten jätin tyhjäksi.\
 Server Configuroinnista vaihdoin Hostname kohtaan "porkkana", jos vaikka joskus tämä tulisi muualla näkyviin niin ei likaa tietoa koneesta.\
 Sitten painoin Deploy. Oikeassa reunassa näkyi vielä kooste virtuaalipalvelimen tiedoista.
-![upCloudDeploy](https://github.com/user-attachments/assets/b1e4ef59-1f72-4c97-b88a-8e29d3f3ec9e)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudDeploy.png width=600>
 
 Tämän jälkeen siirryin automaattisesti Server list välilehdellä, jossa alkuun näkyi teksti "Deploying", hetken päästä palvelimen kohdalle tuli vihreä pallo ja se oli valmiina käyttöön.
-![upCloudValmis](https://github.com/user-attachments/assets/6ac0bfdd-3007-4e8c-88f0-99ba91d81c45)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudValmis.png width=600>
 
 ## b - Alkutoimet virtuaalipalvelimella
 Start: 13.15\
@@ -119,7 +134,8 @@ $ sudo ufw allow 22/tcp          # sallii portin 22 käytön, tätä kautta pork
 $ sudo ufw enable                # Käynnistää palomuurin, varmistaa vielä että tämä voi vaikuttaa porkkanapalvelimelle kirjautumiseen, mutta avasimme äsken portin 22, joten "y"
 $ sudo ufw status                # Näyttää taas palomuurin statuksen, nyt "Active" ja listassa näkyy "22/tcp ALLOW"
 ```
-![sshFirewall](https://github.com/user-attachments/assets/58c0d0d9-bb0a-44fc-8dbc-9163d4bb36a2)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshFirewall.png width=600>
 
 Tämän jälkeen lähdin luomaan uutta käyttäjää, jotta myöhemmin voidaan sulkea root käyttäjä. Käytän tässä vaiheessa "sudo" komentojen alussa, vaikka periaatteessa root käyttäjän tätä ei tarvitsisi, mutta näin jää eri logeihin merkintä siitä, että komennot on suoritettu. Komennot:
 ```
@@ -127,7 +143,8 @@ $ sudo adduser tuke          # luo käyttäjän tuke, pyytää lisätietoja kute
 $ sudo adduser tuke sudo     # lisää käyttäjän tuke ryhmään sudo
 
 ```
-![sshAdduser](https://github.com/user-attachments/assets/b5d27693-6e0f-4b81-b4bd-5ef9d86934cb)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshAdduser.png width=600>
 
 Tässä vaiheessa yritin kirjautua uudelle käyttäjälle toisesta terminaalista.
 ```
@@ -163,7 +180,8 @@ $ ssh tuke@94.237.118.113
 PORKKANA
 $ sudo echo moikka          # Tämä varmisti sudo toimivuuden, kun kysyi salasanaa ja toimi salasanan syötön jälkeen
 ```
-![sshUserAccess](https://github.com/user-attachments/assets/01d4f20c-a68d-4891-b971-78a977a1e814)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshUserAccess.png width=600>
 
 Nyt olin sisällä tuke käyttäjänä ja lähdin sulkemaan root käyttäjän pois. Syötin komennot:
 ```
@@ -171,7 +189,8 @@ $ sudo usermod --lock root      # lukitsee salasana kirjautumisen root käyttäj
 $ sudo mv -nv /root/.ssh /root/DISABLE-ssh/  # vaihtaa .ssh kansion nimen DISABLE-ssh, jolloin kirjautuessa sitä ei osata yhdistää
 ```
 Tämän jälkeen yritin kirjautua root käyttäjälle sisälle porkkanapalvelimelle ja se ei enää onnistunut.
-![sshRootLock](https://github.com/user-attachments/assets/a28dba90-4cef-4f81-a5fe-d5e70d5014c9)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshRootLock.png width=600>
 
 Nyt lähdin päivittämään porkkanapalvelimen käyttöjärjestelmän ja asentamaan muutamia ohjelmia.
 ```
@@ -194,21 +213,24 @@ Tämän jälkeen ajoin tarkistuksen läpi.
 ```
 $ sudo systemctl statu apache2
 ```
-![apacheStatus](https://github.com/user-attachments/assets/97ded0db-2886-4606-a588-8801edc4cfbf)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheStatus.png width=600>
 
 Eli Apache oli asentunut onnistuneesti. En kuitenkaan päässyt vielä Apachen default sivulle julkisen IP:n(94.237.118.113) kautta. Piti siis tehdä palomuurin aukko.
 ```
 $ sudo ufw allow 80/tcp    # luo reiän palomuuriin portille 80
 $ sudo ufw status          # tarkistaa palomuurin statuksen
 ```
-![apacheFirewall](https://github.com/user-attachments/assets/da59abf3-6024-4ad2-9a6a-efb986fde62e)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheFirewall.png width=600>
 
 Nyt aukesi jo Apachen default sivu julkisen IP:n(94.237.118.113) kautta. Siirryin siis vaihtamaan olemassa olevan index tiedoston sisällön uuteen.
 ```
 $ echo Tuken uudet nettisivut porkkanapalvelimella | sudo tee /var/www/html/index.html
 ```
 Päivitti index.html tiedoston, jota Apache käyttää default sivupohjanaan, vain uudella tekstillä. Muutoksen jälkeen näytti tältä.
-![apacheUusiIndex](https://github.com/user-attachments/assets/4a8794ca-f079-47d4-abb6-752f1db65a68)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheUusiIndex.png width=600>
 
 Kaikki tässä vaiheessa toimi siis kuten pitääkin.
 
@@ -231,7 +253,8 @@ $ sudoedit /etc/apache2/sites-available/porkkana.example.com.conf
                 </Directory>
 </VirtualHost>
 ```
-![porkkanaExampleConf](https://github.com/user-attachments/assets/fdb807a9-4d2c-4642-9b96-bddd9940e25e)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaExampleConf.png width=600>
 
 Alkuun tarkistin vain demotakseni, että onko kansiota /home/tuke/public_sites/porkkana.example.com olemassa.
 ```
@@ -255,8 +278,8 @@ $ ls                            # näkyi uusi kansio
 $ cd public_sites               # siirryin uuteen kansioon
 $ mkdir porkkana.example.com    # taas onnistui uuden kansion luonti
 ```
-![porkkanaMkdir](https://github.com/user-attachments/assets/01db4190-45f6-4ba2-9787-b9789ef3bdf5)
 
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaMkdir.png width=600>
 
 Tässä vaiheessa ajattelin, että olin vain tehnyt kirjoitusvirheen jossain aiemmin, enkä sen enempää miettinyt asiaa, koska kansio oli nyt luotu. Lähdin siis työstämään seuraavaa vaihetta ja enabloimaan luotua sivua sekä sulkemaan vanhaa default sivua.
 ```
@@ -265,7 +288,8 @@ $ sudo systemctl restart apache2                 # käynnistää apachen uudesta
 $ sudo a2dissite 000-default.conf                # poistaa vanhan default sivun käytöstä
 $ sudo systemctl restart apache2
 ```
-![porkkanaEnsite](https://github.com/user-attachments/assets/51c5f42e-ccbe-49de-a909-8939912b5f2f)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaEnsite.png width=600>
 
 Kaikki oli mielestäni tässä vaiheessa niin kuin piti joten lähdin luomaan testisivua kansioon.
 ```
@@ -279,7 +303,8 @@ $ micro index.html    # Kirjasin alkuun vaan tekstin "Tuken uusi porkkanasivu T�
 $ curl localhost
 ```
 Tässä vaiheessa tuli ongelma, sivu ei auennut ja syöte oli 403 Forbidden.
-![porkkanaOngelma](https://github.com/user-attachments/assets/771ea92d-7663-4326-9737-553ac068c813)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaOngelma.png width=600>
 
 Lähdin selvittämään logeista.
 ```
@@ -298,7 +323,8 @@ Odotetusti mikään ei ollut muuttunut, mutta ainakin suljin sen vaihtoehdon poi
 $ ls -ld /home /home/tuke /home/tuke/public_sites
 ```
 Tässä vaiheessa löytyi virhe.
-![porkkanaAenModUserDir](https://github.com/user-attachments/assets/03038614-7d43-43f8-920e-242a87408d65)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaAenModUserDir.png width=600>
 
 Alhaalla näkyy, että kansiossa /home/tuke ei ole xr oikeuksia. x = execute ja r = read. Lähdin etsimään alkuperäisellä virheilmoituksella tapaa korjata ongelma, ja löysin StackOverflow:sta vastaavan ongelman. (https://stackoverflow.com/questions/25190043/apache-permissions-are-missing-on-a-component-of-the-path). Sivulla oli yksi ohje chmod käytöstä, jota päätin kokeilla. Tässä vaiheessa tuli myös pari kirjoitusvirhettä, jotka näkyvät kuvassa, mutta lopulta pääsin etenemään.
 ```
@@ -307,10 +333,12 @@ $ ls -ld /home /home/tuke /home/tuke/public_sites
 $ curl localhost
 ```
 Tässä vaiheessa ls -ld näytti oikeat oikeudet ja curl localhost näytti oikean sivun tekstiversion. Sivu jopa aukesi julkisen IP:n kautta niin kuin pitikin.
-![porkkanaKuulee](https://github.com/user-attachments/assets/4445ae50-bb2e-4610-a012-30b6e64b7fc6)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaKuulee.png width=600>
 
 Muutin vielä tässä vaiheessa toimivan sivun index.html tiedostoa vähän siistimpään muotoon. Tässä sen html koodi ja toimiva sivu.
-![porkkanaValmis](https://github.com/user-attachments/assets/d761157d-98b3-4dfb-a2cd-9ee4f1e77aef)
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaValmis.png width=600>
 
 ## Lähteet
 

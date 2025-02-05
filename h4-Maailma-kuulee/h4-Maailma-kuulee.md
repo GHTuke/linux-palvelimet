@@ -73,7 +73,7 @@ Sitten piti valita Plan, jolla edetään. Eri tasoilla eri hinnoittelu ja tasoje
 Seuraavaksi olisi voinut vaikuttaa virtuaalikovalevyihin, luoda uusia jakoja tai valita salausta. Menin tässä vaiheessa perusasetuksilla, kun ei muuta tarvita.
 
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudStorage.png width=600>
-<img src= width=600>
+
 Sitten tuli ensimmäiset pelkät lisämyynnit, eli varmuuskopiointi. En ottanut tässä vaiheessa, kun ei sitä harjoituspalvelimelle tarvita ja muitakin ratkaisuja tarvittaessa löytyy.
 
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudBackup.png width=600>
@@ -100,7 +100,7 @@ $cd .ssh # avasi kansion, jossa avaimet ovat
 $micro id_rsa.pub # avasin micro tekstieditorissa JULKISEN avaimen eli .pub päätteisen, josta kopioin avaimen upcloud SSH salausta varten. HUOM! ei ikinä privaattiavainta muille.
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshPublic.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshPublic.png width=850>
 
 Avaimen syötettyä upCloudin autentikointi kohta näytti tältä.
 
@@ -135,7 +135,7 @@ $ sudo ufw enable                # Käynnistää palomuurin, varmistaa vielä et
 $ sudo ufw status                # Näyttää taas palomuurin statuksen, nyt "Active" ja listassa näkyy "22/tcp ALLOW"
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshFirewall.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshFirewall.png width=850>
 
 Tämän jälkeen lähdin luomaan uutta käyttäjää, jotta myöhemmin voidaan sulkea root käyttäjä. Käytän tässä vaiheessa "sudo" komentojen alussa, vaikka periaatteessa root käyttäjän tätä ei tarvitsisi, mutta näin jää eri logeihin merkintä siitä, että komennot on suoritettu. Komennot:
 ```
@@ -144,7 +144,7 @@ $ sudo adduser tuke sudo     # lisää käyttäjän tuke ryhmään sudo
 
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshAdduser.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshAdduser.png width=850>
 
 Tässä vaiheessa yritin kirjautua uudelle käyttäjälle toisesta terminaalista.
 ```
@@ -181,7 +181,7 @@ PORKKANA
 $ sudo echo moikka          # Tämä varmisti sudo toimivuuden, kun kysyi salasanaa ja toimi salasanan syötön jälkeen
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshUserAccess.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshUserAccess.png width=850>
 
 Nyt olin sisällä tuke käyttäjänä ja lähdin sulkemaan root käyttäjän pois. Syötin komennot:
 ```
@@ -190,7 +190,7 @@ $ sudo mv -nv /root/.ssh /root/DISABLE-ssh/  # vaihtaa .ssh kansion nimen DISABL
 ```
 Tämän jälkeen yritin kirjautua root käyttäjälle sisälle porkkanapalvelimelle ja se ei enää onnistunut.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshRootLock.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/sshRootLock.png width=850>
 
 Nyt lähdin päivittämään porkkanapalvelimen käyttöjärjestelmän ja asentamaan muutamia ohjelmia.
 ```
@@ -214,7 +214,7 @@ Tämän jälkeen ajoin tarkistuksen läpi.
 $ sudo systemctl statu apache2
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheStatus.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheStatus.png width=850>
 
 Eli Apache oli asentunut onnistuneesti. En kuitenkaan päässyt vielä Apachen default sivulle julkisen IP:n(94.237.118.113) kautta. Piti siis tehdä palomuurin aukko.
 ```
@@ -222,7 +222,7 @@ $ sudo ufw allow 80/tcp    # luo reiän palomuuriin portille 80
 $ sudo ufw status          # tarkistaa palomuurin statuksen
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheFirewall.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheFirewall.png width=850>
 
 Nyt aukesi jo Apachen default sivu julkisen IP:n(94.237.118.113) kautta. Siirryin siis vaihtamaan olemassa olevan index tiedoston sisällön uuteen.
 ```
@@ -230,7 +230,7 @@ $ echo Tuken uudet nettisivut porkkanapalvelimella | sudo tee /var/www/html/inde
 ```
 Päivitti index.html tiedoston, jota Apache käyttää default sivupohjanaan, vain uudella tekstillä. Muutoksen jälkeen näytti tältä.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheUusiIndex.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/apacheUusiIndex.png width=850>
 
 Kaikki tässä vaiheessa toimi siis kuten pitääkin.
 
@@ -254,7 +254,7 @@ $ sudoedit /etc/apache2/sites-available/porkkana.example.com.conf
 </VirtualHost>
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaExampleConf.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaExampleConf.png width=850>
 
 Alkuun tarkistin vain demotakseni, että onko kansiota /home/tuke/public_sites/porkkana.example.com olemassa.
 ```
@@ -279,7 +279,7 @@ $ cd public_sites               # siirryin uuteen kansioon
 $ mkdir porkkana.example.com    # taas onnistui uuden kansion luonti
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaMkdir.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaMkdir.png width=850>
 
 Tässä vaiheessa ajattelin, että olin vain tehnyt kirjoitusvirheen jossain aiemmin, enkä sen enempää miettinyt asiaa, koska kansio oli nyt luotu. Lähdin siis työstämään seuraavaa vaihetta ja enabloimaan luotua sivua sekä sulkemaan vanhaa default sivua.
 ```
@@ -289,7 +289,7 @@ $ sudo a2dissite 000-default.conf                # poistaa vanhan default sivun 
 $ sudo systemctl restart apache2
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaEnsite.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaEnsite.png width=850>
 
 Kaikki oli mielestäni tässä vaiheessa niin kuin piti joten lähdin luomaan testisivua kansioon.
 ```
@@ -304,7 +304,7 @@ $ curl localhost
 ```
 Tässä vaiheessa tuli ongelma, sivu ei auennut ja syöte oli 403 Forbidden.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaOngelma.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaOngelma.png width=850>
 
 Lähdin selvittämään logeista.
 ```
@@ -324,7 +324,7 @@ $ ls -ld /home /home/tuke /home/tuke/public_sites
 ```
 Tässä vaiheessa löytyi virhe.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaAenModUserDir.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaAenModUserDir.png width=850>
 
 Alhaalla näkyy, että kansiossa /home/tuke ei ole xr oikeuksia. x = execute ja r = read. Lähdin etsimään alkuperäisellä virheilmoituksella tapaa korjata ongelma, ja löysin StackOverflow:sta vastaavan ongelman. (https://stackoverflow.com/questions/25190043/apache-permissions-are-missing-on-a-component-of-the-path). Sivulla oli yksi ohje chmod käytöstä, jota päätin kokeilla. Tässä vaiheessa tuli myös pari kirjoitusvirhettä, jotka näkyvät kuvassa, mutta lopulta pääsin etenemään.
 ```
@@ -334,11 +334,11 @@ $ curl localhost
 ```
 Tässä vaiheessa ls -ld näytti oikeat oikeudet ja curl localhost näytti oikean sivun tekstiversion. Sivu jopa aukesi julkisen IP:n kautta niin kuin pitikin.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaKuulee.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaKuulee.png width=850>
 
 Muutin vielä tässä vaiheessa toimivan sivun index.html tiedostoa vähän siistimpään muotoon. Tässä sen html koodi ja toimiva sivu.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaValmis.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/porkkanaValmis.png width=850>
 
 ## Lähteet
 

@@ -182,9 +182,37 @@ $ sudo apt-get -y install micro bash-completion curl    # asentaa ohjelmat micro
 Tupla updatea ei olis tarvinnut, mutta automaatiolla kirjasin läpi ennen ohjelmien asennuksia.
 
 ## c - Webpalvelimen asennus (Apache)
+Start: 14.47\
+Finish: 14.54
 
+Lähdin asentamaan porkkanapalvelimelle webpalvelinta (Apache), tämä toistaa osittain aikasempaa tehtävää, mutta muutamia eroja on. Alkuun asensin Apachen komennolla:
+```
+$ sudo apt-get install apache2
+```
+Tämän jälkeen ajoin tarkistuksen läpi.
+```
+$ sudo systemctl statu apache2
+```
+![apacheStatus](https://github.com/user-attachments/assets/97ded0db-2886-4606-a588-8801edc4cfbf)
+
+Eli Apache oli asentunut onnistuneesti. En kuitenkaan päässyt vielä Apachen default sivulle julkisen IP:n(94.237.118.113) kautta. Piti siis tehdä palomuurin aukko.
+```
+$ sudo ufw allow 80/tcp    # luo reiän palomuuriin portille 80
+$ sudo ufw status          # tarkistaa palomuurin statuksen
+```
+![apacheFirewall](https://github.com/user-attachments/assets/da59abf3-6024-4ad2-9a6a-efb986fde62e)
+
+Nyt aukesi jo Apachen default sivu julkisen IP:n(94.237.118.113) kautta. Siirryin siis vaihtamaan olemassa olevan index tiedoston sisällön uuteen.
+```
+$ echo Tuken uudet nettisivut porkkanapalvelimella | sudo tee /var/www/html/index.html
+```
+Päivitti index.html tiedoston, jota Apache käyttää default sivupohjanaan, vain uudella tekstillä. Muutoksen jälkeen näytti tältä.
+![apacheUusiIndex](https://github.com/user-attachments/assets/4a8794ca-f079-47d4-abb6-752f1db65a68)
+
+Kaikki tässä vaiheessa toimi siis kuten pitääkin.
 
 ## d - Vapaaehtoinen Name Based Virtual Host
+
 
 
 ## Lähteet

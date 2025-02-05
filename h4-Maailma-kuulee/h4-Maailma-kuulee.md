@@ -46,7 +46,7 @@ Virtual specs:
 
 Alkuun avasin upCloud palveluntarjoajan sivut osoitteesta: https://upcloud.com/. Etusivulta löytyikin ilmaisen trial version mainos, painoin tästä kokeilemaan.\
 Aukesi sivu, josta pystyi aloittamaan käyttäjän luomisen ilmaista trial versiota varten.
-![upCloudTrial](https://github.com/user-attachments/assets/1e9eac4f-eaa7-43af-9a8e-fd4c1163d575)
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/upCloudTrial.png width=600>
 
 Tässä vaiheessa siirryin eteenpäin ja piti syöttää käyttäjätunnus, salasana, puhelinnumero sekä maa. Kaikki näistä olivat pakollisia.
 ![upCloudFinalize](https://github.com/user-attachments/assets/465ffff1-babf-4a87-9ca0-f6f7cdb8a00d)

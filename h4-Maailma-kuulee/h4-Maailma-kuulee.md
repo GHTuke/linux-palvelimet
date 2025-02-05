@@ -4,7 +4,8 @@ Tekijä: Tuukka Huovilainen
 * Pohjana Tero Karvinen 2025: Linux Palvelimet kurssi, http://terokarvinen.com
 
 Tässä työkirjassa suoritetaan Linux Palvelimet -kurssin tehtävää Maailma kuulee, jossa vuokrataan virtuaalipalvelin ja asennetaan sille Apache webpalvelin.
-Aikasempaa tehtävää h3 mukaillen myös muokataan webpalvelimen näyttämää sivua. Virtuaalipalvelimen tarjoana käytetään upCloud tarjoajaa.
+Aikasempaa tehtävää h3 mukaillen myös muokataan webpalvelimen näyttämää sivua. Virtuaalipalvelimen tarjoana käytetään upCloud tarjoajaa. Viimeisessä osiossa myös korjataan hieman ongelmaa, joka syntyi Virtual Name Based Hostingin yhteydessä.
+
 Alkuun koostetaan tiivistelmät webkirjoituksista Susanna Lehto Teoriasta käytäntöön pilvipalvelimen avulla(h4) (https://susannalehto.fi/2022/teoriasta-kaytantoon-pilvipalvelimen-avulla-h4/) sekä Tero Karvinen First Steps on a New Virtual Private Server – an Example on DigitalOcean and Ubuntu 16.04 LTS (https://terokarvinen.com/2017/first-steps-on-a-new-virtual-private-server-an-example-on-digitalocean/).
 
 ## Tiivistelmä
@@ -212,11 +213,108 @@ Päivitti index.html tiedoston, jota Apache käyttää default sivupohjanaan, va
 Kaikki tässä vaiheessa toimi siis kuten pitääkin.
 
 ## d - Vapaaehtoinen Name Based Virtual Host
-Start: 15.12
+Start: 15.12\
 Finish: 16.00
 
+Lähdin asettamaan Name Based Virtual Hostia aikaisemman työkirjan h3 (https://github.com/GHTuke/linux-palvelimet/blob/main/h3-Hello-Web-Server/h3-Hello-Web-Server.md) mukaisesti.
+```
+$ sudoedit /etc/apache2/sites-available/porkkana.example.com.conf
+
+#Avautuvaan tekstieditoriin#
+<VirtualHost *:80>
+        ServerName porkkana.example.com
+        ServerAlias www.porkkana.example.com
+        DocumentRoot /home/tuke/public_sites/porkkana.example.com
+
+                <Directory /home/tuke/public_sites/porkkana.example.com>
+                Require all granted
+                </Directory>
+</VirtualHost>
+```
+![porkkanaExampleConf](https://github.com/user-attachments/assets/fdb807a9-4d2c-4642-9b96-bddd9940e25e)
+
+Alkuun tarkistin vain demotakseni, että onko kansiota /home/tuke/public_sites/porkkana.example.com olemassa.
+```
+$ ls /home/tuke/public_sites/porkkana.example.com
+```
+Ei löytynyt niin kun ei pitänytkään, joten yritin luoda kansion.
+```
+$ mkdir /home/tuke/public_sites/porkkana.example.com
+```
+Jostain syystä tässä tuli ongelma ja tuli virheilmoitus "Cannot access /home/tuke/public_sites/porkkana.example.com No such file or directory".\
+Päätin hypätä kotikansioon ja luoda kansion sieltä käsin, jos vaikka kirjasin jotain väärin.
+```
+$ cd
+$ pwd     # tarkistin vain, että olen oikeassa kansiossa
+$ mkdir public_sites/porkkana.example.com
+```
+Ei vieläkään mennyt läpi, päätin kokeilla osissa.
+```
+$ mkdir public_sites            # tässä vaiheessa uusi kansio luotiin
+$ ls                            # näkyi uusi kansio
+$ cd public_sites               # siirryin uuteen kansioon
+$ mkdir porkkana.example.com    # taas onnistui uuden kansion luonti
+```
+![porkkanaMkdir](https://github.com/user-attachments/assets/01db4190-45f6-4ba2-9787-b9789ef3bdf5)
+
+
+Tässä vaiheessa ajattelin, että olin vain tehnyt kirjoitusvirheen jossain aiemmin, enkä sen enempää miettinyt asiaa, koska kansio oli nyt luotu. Lähdin siis työstämään seuraavaa vaihetta ja enabloimaan luotua sivua sekä sulkemaan vanhaa default sivua.
+```
+$ sudo a2ensite porkkana.example.com.conf        # enabloi sivun apachen webpalvelimelle
+$ sudo systemctl restart apache2                 # käynnistää apachen uudestaan, että muutokset tulevat voimaan
+$ sudo a2dissite 000-default.conf                # poistaa vanhan default sivun käytöstä
+$ sudo systemctl restart apache2
+```
+![porkkanaEnsite](https://github.com/user-attachments/assets/51c5f42e-ccbe-49de-a909-8939912b5f2f)
+
+Kaikki oli mielestäni tässä vaiheessa niin kuin piti joten lähdin luomaan testisivua kansioon.
+```
+$ cd
+$ ls    # oli jäänyt tässä vaiheessa joku epäilys takaraivoon ja tarkistelin kokoajan kansiota missä olin
+$ cd public_sites
+$ ls
+$ cd porkkana.example.com
+$ ls    # oli kansio tyhjä joten indexin luontiin
+$ micro index.html    # Kirjasin alkuun vaan tekstin "Tuken uusi porkkanasivu TÄLLÄ KERTAA EXTRA NAME BASED HOSTINGILLA"
+$ curl localhost
+```
+Tässä vaiheessa tuli ongelma, sivu ei auennut ja syöte oli 403 Forbidden.
+![porkkanaOngelma](https://github.com/user-attachments/assets/771ea92d-7663-4326-9737-553ac068c813)
+
+Lähdin selvittämään logeista.
+```
+$ sudo tail -1 /var/log/apache2/error.log    # avaa viimeisen rivin apache2 ohjelman error logeista
+```
+Kuten ylempänä olevasta kuvasta näkyy tärkeä osa virheilmoitusta oli `filesystem path /home/tuke/public_sites because search permissions are missing on a component of the path`.\
+Eli siis jossain on ongelmia oikeuksien kanssa. Muistelin aiemmin lukemaani Susanna Lehdon webkirjoitusta, jossa mainittiin komento, jota en ollut käyttänyt joka liittyi oikeuksiin. Katselin dokumentaatiosta, että ei pitäisi todennäköisesti olla tästä kiinni oma ongelmani koska se mahdollistaaa suoraan /home kansioon luotujen kansioden pathin käytön apachella. Päätin kuitenkin kokeilla ja ajaa sitten testit uudestaan.
+```
+$ sudo a2enmod userdir
+$ sudo systemctl restart apache2
+$ curl localhost
+$ sudo tail -1 /var/log/apache2/error.log
+```
+Odotetusti mikään ei ollut muuttunut, mutta ainakin suljin sen vaihtoehdon pois. Löysin vielä tavan tarkistaa eri kansioiden tarkemmat oikeudet (löytyi ls komennon help osioista`ls --help | less`). Joten päätin tarkastaa kaikki kansiot väliltä, jossa aiemmin oli luonnin kanssa ongelmia.
+```
+$ ls -ld /home /home/tuke /home/tuke/public_sites
+```
+Tässä vaiheessa löytyi virhe.
+![porkkanaAenModUserDir](https://github.com/user-attachments/assets/03038614-7d43-43f8-920e-242a87408d65)
+
+Alhaalla näkyy, että kansiossa /home/tuke ei ole xr oikeuksia. x = execute ja r = read. Lähdin etsimään alkuperäisellä virheilmoituksella tapaa korjata ongelma, ja löysin StackOverflow:sta vastaavan ongelman. (https://stackoverflow.com/questions/25190043/apache-permissions-are-missing-on-a-component-of-the-path). Sivulla oli yksi ohje chmod käytöstä, jota päätin kokeilla. Tässä vaiheessa tuli myös pari kirjoitusvirhettä, jotka näkyvät kuvassa, mutta lopulta pääsin etenemään.
+```
+$ sudo chmod +x /home /home/tuke    # /home oli tässä vaiheessa turha, koska kyseisessä kansiossa oli execute oikeudet
+$ ls -ld /home /home/tuke /home/tuke/public_sites
+$ curl localhost
+```
+Tässä vaiheessa ls -ld näytti oikeat oikeudet ja curl localhost näytti oikean sivun tekstiversion. Sivu jopa aukesi julkisen IP:n kautta niin kuin pitikin.
+![porkkanaKuulee](https://github.com/user-attachments/assets/4445ae50-bb2e-4610-a012-30b6e64b7fc6)
+
+Muutin vielä tässä vaiheessa toimivan sivun index.html tiedostoa vähän siistimpään muotoon. Tässä sen html koodi ja toimiva sivu.
+![porkkanaValmis](https://github.com/user-attachments/assets/d761157d-98b3-4dfb-a2cd-9ee4f1e77aef)
 
 ## Lähteet
+
+Huovilainen, T. H3-Hello Web Server. https://github.com/GHTuke/linux-palvelimet/blob/main/h3-Hello-Web-Server/h3-Hello-Web-Server.md.
 
 Karvinen, T. First Steps on a New Virtual Private Server – an Example on DigitalOcean and Ubuntu 16.04 LTS. https://terokarvinen.com/2017/first-steps-on-a-new-virtual-private-server-an-example-on-digitalocean/.
 

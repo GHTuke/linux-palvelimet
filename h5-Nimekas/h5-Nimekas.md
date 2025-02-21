@@ -99,6 +99,30 @@ Kun kaikki tiedostot oli kopioitu, pystyi ne avamaan suoraan huovilainen.com oso
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/Projects.png width=600>
 
 ## d - Alidomain
+Start: 13.45\
+Finish: 13.47
+
+Subdomainien luontiin ohjeet https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-create-a-subdomain-for-my-domain/.\
+Uusien subdomainien luonnin aloitin siirtymällä Namecheapiin.\
+Accout ->\
+Domain list ->\
+Manage ->\
+Advanced DNS
+
+Lisäsin Host records kohtaan kaksi uutta A recordia, toiseen asetin host:iksi tuukka ja toiseen blog.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/NameCheapSubdomains.png width=600>
+
+Nyt aikaisemmin luomat sivuni aukeavat myös osoitteista: tuukka.huovilainen.com sekä blog.huovilainen.com.
+
+## e - Host ja Dig
 
 <img src= width=800>
+
+
+## Lähteet
+
+LinuxBlog. SCP Linux – Securely Copy Files Using SCP examples. https://linuxblog.io/linux-securely-copy-files-using-scp/.
+
+NameCheap. How to Create a Subdomain for my Domain. https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-create-a-subdomain-for-my-domain/.
 

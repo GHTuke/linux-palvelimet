@@ -1,1 +1,35 @@
+# H5 - Nimekäs
+Tekijä: Tuukka Huovilainen
 
+* Pohjana Tero Karvinen 2025: Linux Palvelimet kurssi, http://terokarvinen.com
+
+Tässä työkirjassa suoritetaan Linux Palvelimet -kurssin tehtävää Nimekäs, jossa vuokrataan nimipalvelusta domain ja asetetaan se osoittamaan aikasemmin tehtävässä h4 järjestettyyn palvelimeen. Aikaisempia tehtäviä h3 ja h4 mukaillen myös muokataan webpalvelimen näyttämää sivua ja tehdään siitä muutaman eri sivun kokonaisuus. Nimipalveluna käytetään NameCheapia.
+
+## a - Nimi
+Localtime: 21.02.2025\
+Start: 11.00\
+Finish: 11.10
+
+Alkuun avasin Namecheapin verkkosivut osoitteesta https://www.namecheap.com/. Heti etusivulla oli kohta johon pystyi kirjoitaamaan haluamansa domain nimen hakuun.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/NamecheapDomainsearch.png width=600>
+
+Valittuani haluamani nimen ja lisättyäni sen ostoskoriin siirryin maksamaan. Maksun jälkeen käyttäjätiedoistani sai auki kohdan Domain list.\
+Täällä näkyi äsken ostamani domain.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/NamechepDomainlist.png width=600>
+
+Oikeassa reunassa olevasta "Manage" napista pääsi kiinni asetuksiin. Sieltä valitsin "Advanced DNS", jotta pääsin muokkaamaan sivun linkityksiä.\
+Alkuun sivu näytti tältä.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/NamecheapAdvanced.png width=600>
+
+Poistin olemassa olevat Recordit ja lisäsin kaksi uutta "a-record":ia. Host kohtaan valitsin @ ja wwww. Value on upCloud palvelusta aiemmassa tehtävässä ostetun palvelimen IP-osoite (ainakin identtisen, jouduin tekemään uuden palvelimen tehtävien välissä).
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/NameCheapAdvancedChanged.png width=600>
+
+Pienen odottelun jälkeen jo sitten näkyikin palvelimelleni tehty porkkanasivu.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/PorkkanaToimii.png width=600>
+
+## b - Based

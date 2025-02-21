@@ -33,3 +33,43 @@ Pienen odottelun jälkeen jo sitten näkyikin palvelimelleni tehty porkkanasivu.
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/PorkkanaToimii.png width=600>
 
 ## b - Based
+Start: 12.15\
+Finish: 12.17
+
+Lähdin luomaan name based virtual hostia tuttuun tapaan luomalla uuden conf teksti tiedoston apachen sites available listaan.
+```
+$ sudoedit /etc/apache2/sites-available/huovilainen.com
+
+#Avautuvaan tekstieditoriin#
+<VirtualHost *:80>
+        ServerName huovilainen.com
+        ServerAlias huovilainen.com
+        DocumentRoot /home/tuke/public_sites/huovilainen.com
+
+                <Directory /home/tuke/public_sites/huovilainen.com>
+                Require all granted
+                </Directory>
+</VirtualHost>
+```
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/Sudoedit.png width=600>
+
+Tämän jälkeen loin kansion, jonne conf tiedosto osoittaa ja loin sinne index.html tiedoston.
+
+```
+$ mkdir -p /home/tuke/public_sites/huovilainen.com
+$ cd /home/tuke/public_sites/huovilainen.com
+$ micro index.html
+```
+Sitten asetin sivun apachen käyttöön ja poistin vanhan porkkana sivun käytöstä. Loppuun vielä testastin curlilla nopeasti mitä sivu palauttaa.
+
+```
+$ sudo a2ensite huovilainen.com.conf
+$ sudo a2dissite porkkana.example.com.conf
+$ sudo systemctl restart apache2
+$ curl localhost
+```
+Tässä vaiheessa sivu toimi aivan normaalisti sen domain nimen kautta mistä tahansa laitteesta.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/microToimivaTesti.png width=800>
+
+## c - Kotisivu

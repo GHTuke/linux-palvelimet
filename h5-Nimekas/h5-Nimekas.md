@@ -73,3 +73,32 @@ Tässä vaiheessa sivu toimi aivan normaalisti sen domain nimen kautta mistä ta
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/microToimivaTesti.png width=800>
 
 ## c - Kotisivu
+Start: 12.50\
+Finish: 13.13
+
+Aloitin tehtävän kirjoittamalla kolmeen eri html tiedostoon verkkosivujen koodin. Koodi on hyvin yksinkertaista aikapaineiden takia ja tulen sitä tulevaisuudessa muokkaamaan lisää, mutta alustavasti sivujen oli vain tarkoitus toimia.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/SivujenKoodit.png width=800>
+
+Koodien kirjoittamisen jälkeen lähdin siirtämään niitä virtuaalipalvelimelle käyttäen scp komentoa (https://linuxblog.io/linux-securely-copy-files-using-scp/).\
+Tein aluksi vain yhden tiedoston siirron testinä, jonka jälkeen siirsin loput kaksi erillisinä tiedostoina. Siirron olisi voinut tehdä myös yhdellä komennolla, mutta tällä kertaa hoidin asian tällä tavalla.
+```
+$ scp /home/tuke/esimerkkisivuja/index.html tuke@94.237.113.82:/home/tuke/public_sites/huovilainen.com
+```
+Syntaksi avattuna\
+`scp` secure copy protocol, on vain toiminnon nimi, jolla sitä kutsutaan\
+`/path/index.html` on koko polku tiedostoon, pystyisi kopioimaan myös kansion, mutta testasin vasta toimivuutta\
+`tuke@94.237.113.82` käyttäjänimi ja palvelin, jonne siirto suoritetaan\
+`:/path/` polku minne kansioon tiedostot kopioidaan
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/scpKopiointi.png width=600>
+
+Kun kaikki tiedostot oli kopioitu, pystyi ne avamaan suoraan huovilainen.com osoitteesta.
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/Main.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/About.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/Projects.png width=600>
+
+## d - Alidomain
+
+<img src= width=800>
+

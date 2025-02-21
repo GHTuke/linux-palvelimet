@@ -117,6 +117,15 @@ Nyt aikaisemmin luomat sivuni aukeavat myös osoitteista: tuukka.huovilainen.com
 
 ## e - Host ja Dig
 
+Alkuun ei omalta linux koneelta löytynyt `host` tai `dig` toimintoja. Tämän pystyi tarkistamaan helposti esim. `host -V`, joka listaisi version paketista.\
+Sivulta https://superuser.com/questions/141623/installing-dig-on-debian löytyi ohjeet dnsutils paketin asentamiseen, jonka sisällä molemmat tulevat.\
+```
+$ sudo apt-cache search dnsutils
+$ sudo apt-get install dnsutils
+$ host -V
+```
+
+
 <img src= width=800>
 
 
@@ -125,4 +134,6 @@ Nyt aikaisemmin luomat sivuni aukeavat myös osoitteista: tuukka.huovilainen.com
 LinuxBlog. SCP Linux – Securely Copy Files Using SCP examples. https://linuxblog.io/linux-securely-copy-files-using-scp/.
 
 NameCheap. How to Create a Subdomain for my Domain. https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-create-a-subdomain-for-my-domain/.
+
+SuperUser. Installing dig on Debian. https://superuser.com/questions/141623/installing-dig-on-debian.
 

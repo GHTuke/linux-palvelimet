@@ -145,7 +145,7 @@ Mailin forward tiedot myös osuvat yhteen Namecheapin Domain managerin kautta n�
 
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/MailOma.png width=800>
 
-Tämän jälkeen suoritin `dig huovilainen.com` komennon, ja käydään vähän tarkemmin läpi mitä mikäkin kohta tarkoittaa.
+Tämän jälkeen suoritin `dig huovilainen.com` komennon, ja käydään vähän tarkemmin läpi mitä mikäkin kohta tarkoittaa samaa avataan myös https://phoenixnap.com/kb/linux-dig-command-examples.
 
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h5-Nimekas/DigOma.png width=800>
 

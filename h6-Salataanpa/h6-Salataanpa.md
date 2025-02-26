@@ -57,7 +57,7 @@ Siirryin siis hakemaan sertifikaattia ja alkuun asensin legon komennolla `sudo a
 
 Tämän jälkeen kokeilin Let's encryptin Staging Serverin kautta, että syntaksi jonka kirjoitan toimii eikä sertifikaatin asettamisessa ole muitakaan ongelmia.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/legoKomento.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/legoKomento.png width=1000>
 
 Alla myös koodina kyseinen kuva.
 ```
@@ -71,7 +71,7 @@ lego
 ```
 Ei tullut harjoitushaun kanssa ongelmia ja lego oli luonut aiemmin luomaani lego kansioon tarvittavat tiedostot sertifikaattivarmennusta varten.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/legoStagingKansiot.png width=600>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/legoStagingKansiot.png width=800>
 
 Koska kaikki toimi, muutin lego kansion nimen komennolla `mv -n lego DISlego` ja loin uuden lego kansion oikeita kansioita ja tiedostoja varten. `mkdir lego`.
 

@@ -9,14 +9,14 @@ Alkuun lyhyet tiivistelmät kolmesta artikkelista.
 ## x - Tiivistelmä
 
 ### Let's Encrypt - How it works
-https://letsencrypt.org/how-it-works/\
+https://letsencrypt.org/how-it-works/
 
 * Certificate management agent (CMA), joka on asennettu palvelimelle varmistaa Let's encryptille, että juuri tämä palvelin hallinnoi domainia.
 * Tunnistuksen jälkeen CMA pystyy pyytämään sertifikaattia, sekä uusimaan tai poistamaan niitä.
 * Toimii julkisen ja yksityisen avaimen kautta joita CMA käyttää varmistamaan palvelimen oikeellisuuden.
 
 ### Lego - Obtain a Certificate
-https://go-acme.github.io/lego/usage/cli/obtain-a-certificate/index.html#using-an-existing-running-web-server\
+https://go-acme.github.io/lego/usage/cli/obtain-a-certificate/index.html#using-an-existing-running-web-server
 
 * Jos on käynnissä oleva julkinen http palvelin portissa 80 Lego kirjoittaa Acme challenge tokenin
 * Jos julkisen http palvelimen kansio on saatavilla domainin juuresta `/`, voidaan varmistus suorittaa tätä kautta
@@ -26,7 +26,7 @@ lego --accept-tos --email you@example.com --http --http.webroot /path/to/webroot
 ```
 
 ### Apache Documentation - SSL/TLS Strong Encryption: How-To
-https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample\
+https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample
 
 * Palvelimelle tarvitsee verkkosivun conf-tiedostoon lisätä seuraavanlainen koodi
 ```
@@ -40,9 +40,24 @@ Listen 443
     SSLCertificateKeyFile "/path/to/www.example.com.key"
 </VirtualHost>
 ```
-* Tässä tapauksessa SSL moduliian ei ole erikseen apachesta asetettu käyntiin vaan se ladataan "LoadModule" komennolla conf-tiedostossa
+* Tässä tapauksessa SSL moduulia ei ole erikseen apachesta asetettu käyntiin vaan se ladataan "LoadModule" komennolla conf-tiedostossa
 
 ## a - Let's
+
+Host specs:
+
+    Windows 11 Home v. 24H2
+    AMD Ryzen 7 6800H
+    RAM 16 Gt
+    VirtualBox v. 7.1.4
+
+Virtual specs:
+
+    Debian amd64 12(bookworm)
+    VRAM 128MB
+    RAM 4 Gt
+    VHarddisk 40GB
+
 Localtime: 26.02.2025\
 Start: 11.00\
 Finish: 11.26
@@ -55,7 +70,7 @@ Kuten kuvasta näkyy, ei sivulla ole vielä sertifikaattia. (Lukko on ruksittu y
 
 Siirryin siis hakemaan sertifikaattia ja alkuun asensin legon komennolla `sudo apt-get install lego`. Lego toimii Certificate Managemnt Agentina joka varmistaa Let's Encryptille eli sertifikaatin tarjoajalle, että domain kuuluu tälle palvelimelle. Loin myös tulevia lego tiedostoja varten kansion `mkdir lego` omaan kotikansiooni.
 
-Tämän jälkeen kokeilin Let's encryptin Staging Serverin kautta, että syntaksi jonka kirjoitan toimii eikä sertifikaatin asettamisessa ole muitakaan ongelmia.
+Tämän jälkeen kokeilin Let's encryptin Staging Serverin kautta (https://letsencrypt.org/fi/docs/staging-environment/), että syntaksi jonka kirjoitan toimii eikä sertifikaatin asettamisessa ole muitakaan ongelmia.
 
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/legoKomento.png width=1000>
 
@@ -122,29 +137,30 @@ Nyt ilmestyi sivun osoitekenttään jo ihan oikea lukon kuva ja https://huovilai
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/httpsToimii.png width=600>
 
 ## b - A-rating
-Start: \
-Finish:
+Start: 12.32\
+Finish: 12.34
 
+Lähdin suorittamaan Qualysin SSL Labsin SSL Server Testiä, joka testaa verkkosivun SSL (Secure Socket Layer) konfiguraatiota. Löytyy: https://www.ssllabs.com/ssltest/.
 
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/qualysMain.png width=600>
 
-<img src= width=600>
+Yleisesti sertifikaatin konfiguraatiot näyttivät olevan hyvin toimivat. Ja arvosanaksi tuli A, ainakin A+ on mahdollinen yli tämän, että ei kaikki täydellisesti toiminut.
 
-Host specs:
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/parastaALuokkaa.png width=600>
 
-    Windows 11 Home v. 24H2
-    AMD Ryzen 7 6800H
-    RAM 16 Gt
-    VirtualBox v. 7.1.4
+Yleisesti Certificate #1 osiosta, kyseisessä sertifikaatissa näkyy pääpirteittäin ajetun testin tärkeät tiedot testatusta palvelimesta (huovilainen.com). Näkyy muun muassa minkälaisella salauksella TLS protokolla toimii, tässä tapauksessa avain on EC 256 bits kryptografian pohjalle rakennettu hash. Ainoa keltaisella merkattu osa sertifikaatista DNS CAA puuttuminen johtuu siitä, että en ole asettanut mitään yksittäistä sertifikaattimyöntäjää ainoaksi sertifikaatin myöntäjäksi, joka voisi sivulleni sertifikaatin myöntää. Lisätietoa tästä: https://letsencrypt.org/fi/docs/caa/.
 
-Virtual specs:
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/Sert1.png width=600>
 
-    Debian amd64 12(bookworm)
-    VRAM 128MB
-    RAM 4 Gt
-    VHarddisk 40GB
+Yleisesti testi kokeilee uudella ja vanhalla tiedolla myös palvelimen toimintaa. Esimerkiksi Configuration kohdasta näkyy, että TLS protokolla on toiminnassa vain 1.3 ja 1.2 versioista, kaikki vanhemmat ovat poissa käytöstä.
 
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/sertProtokollat.png width=600>
 
+Testin tekemät Handshake simulaatiot myös menivät kaikki läpi, paitsi yksi.
 
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/handshakeError.png width=600>
+
+Tässä näkyvä ongelma oli chrome versio 49 ajettuna windows XP versio SP3:lla. Pienen googlettelun jälkeen, Chrome 49 julkaistiin vuonna 2016 ja on siirrytty jo huomattavasti eteenpäin tästä. Windows XP SP3 julkaisiin jo vuonna 2001, ja Windows XP:n support lopetettiin huhtikuun 8.pvä 2014. Eli harvinainen kombinaatio tässä vaiheessa.
 
 ## Lähteet
 
@@ -153,3 +169,7 @@ Apache. SSL/TLS Strong Encryption: How-To. https://httpd.apache.org/docs/2.4/ssl
 Lego. Obtain a Certificate. https://go-acme.github.io/lego/usage/cli/obtain-a-certificate/index.html#using-an-existing-running-web-server.
 
 Let's Encrypt. How it works. https://letsencrypt.org/how-it-works/.
+
+Let's Encrypt 2. Certificate Authority Authorization (CAA). https://letsencrypt.org/fi/docs/caa/.
+
+SSLLabs. SSL Server Test. https://www.ssllabs.com/ssltest/.

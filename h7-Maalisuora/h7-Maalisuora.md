@@ -57,12 +57,48 @@ print("Hello World!")
 ```
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/luaHello.png width=800>
 
+## c - Uusi linux komento
+Localtime: 05.03.2025\
+Start: 13.15\
+Finish: 13.25
+
+Aloitin tehtävän luomalla komennolla `micro morning.sh` uuden shellscript tiedoston. Kirjasin sinne seuraavanlaisen komennon.
+```
+#!/usr/bin/bash		# "shebang" komento joka kertoo millä ohjelmalla tiedosto ajetaan https://www.baeldung.com/linux/shebang
+
+cowsay -e'@@' Good Morning!	# Luo lehmän kuvan, joka sanoo "Good Morning!" -e'@@' vaihtaa lehmän silmät annetuksi merkkijonoksi
+date +'Today is %d.%m.%Y'	# Printtaa päivämäärän
+echo Todos for today:		# Elämää helpottava print, joka kertoo kaiken tarvittavan päivälle
+echo 1. Nothing
+```
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/microMorning.png width=600>
+
+Tiedostolla ei alkuun ollut execute oikeuksia, joten jotta myöhemmin myös muut voisivat tiedostoa ajaa lisäsin siihen käyttäjäoikeuksia `chmod ugo+x morning.sh`. Komento lisää execute oikeudet tiedoston omistaja userille(u), tiedoston omistajaryhmälle groupille(g) sekä othersille(o) eli muille (tämän vuoksi ugo).
+
+Koska lisäsin heti alkuun shebang komennon tiedostoon, pystyin ajamaan sen heti ilman `bash` etuliitettä komennolla `./morning.sh`.
+
+Tämän jälkeen poistin tiedoston nimestä .sh päätteen komennolla `mv morning.sh morning`. Sitten siirsin sen kaikkien käytettäväksi `sudo cp morning /usr/local/bin`.
+
+Testatakseni, että komento toimii nyt myös muilla käyttäjillä loin uuden käyttäjän `sudo adduser testeri`. Ja kirjauduin sisälle käyttäjälle `su testeri`.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/testeriMorningUusi.png width=800>
+
+Näyttääkseni, että uudella käyttäjälle ei ollut oikeuksia tuke käyttäjän kotikansioon ajoin `ls` komennon tuken kotikansiossa, jonka jälkeen siirryin testerin omaan kotikansioon ja varmistin, että se on myös tyhjä. Sen jälkeen ajoin luomani komennon `morning` ja se toimi.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/testeriMorning.png width=800>
+
+Siirryin vielä takaisin tuke käyttäjälle `su tuke` ja ajoin uudestaan `morning` komennon.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/tukeMorning.png width=600>
+
 <img src= width=800>
 
 ## Lähteet
 
+chmod. Manual chmod. man chmod.
+
+Dąbrowski, M. Baeldung. Using Shebang #! in Linux. https://www.baeldung.com/linux/shebang. 
+
 Karvinen, T. Linux palvelimet 2025 alkukevät. https://terokarvinen.com/linux-palvelimet/.
-
-
 
 

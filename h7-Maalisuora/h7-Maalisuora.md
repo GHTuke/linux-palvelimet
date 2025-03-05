@@ -5,6 +5,20 @@ Tekijä: Tuukka Huovilainen
 
 Tässä työkirjassa suoritetaan Linux Palvelimet -kurssin tehtävää Maalisuora. Alkuun luodaan muutama perus "Hello world" koodin pätkä kolmella eri kielellä. Sen jälkeen luodaan Linuxiin uusi komento shellscriptillä ja asetetaan se kaikkien käyttäjien käytettäväksi. Sen jälkeen suoritetaan yksi vanha lopputehtävä aiemmalta kurssilta.
 
+Host specs:
+
+    Windows 11 Home v. 24H2
+    AMD Ryzen 7 6800H
+    RAM 16 Gt
+    VirtualBox v. 7.1.4
+
+Virtual specs:
+
+    Debian amd64 12(bookworm)
+    VRAM 128MB
+    RAM 4 Gt
+    VHarddisk 40GB
+
 ## a - Hello, world
 Localtime: 05.03.2025\
 Start: 12.35\

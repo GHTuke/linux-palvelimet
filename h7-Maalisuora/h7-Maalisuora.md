@@ -218,8 +218,6 @@ Sen jälkeen käynnistin apachen uudestaan komennolla `sudo systemctl restart ap
 
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/alkakoneToimii.png width=700>
 
-<img src= width=800>
-
 ## Lähteet
 
 chmod. Manual chmod. man chmod.
@@ -227,3 +225,5 @@ chmod. Manual chmod. man chmod.
 Dąbrowski, M. Baeldung. Using Shebang #! in Linux. https://www.baeldung.com/linux/shebang. 
 
 Karvinen, T. Linux palvelimet 2025 alkukevät. https://terokarvinen.com/linux-palvelimet/.
+
+Karvinen, T. Hello World Python3, Bash, C, C++, Go, Lua, Ruby, Java – Programming Languages on Ubuntu 18.04. https://terokarvinen.com/2018/hello-python3-bash-c-c-go-lua-ruby-java-programming-languages-on-ubuntu-18-04/.

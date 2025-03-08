@@ -2,6 +2,10 @@
 
 Tekijä: Tuukka Huovilainen
 
+* Pohjana Tero Karvinen 2025: Linux Palvelimet kurssi, http://terokarvinen.com
+
+Muokattu 08.03.2025 Lisätty lähteitä.
+
 Tässä työkirjassa toteutan kurssin "Linux palvelimet" tehtävää H2-Komentaja Pingviini, jossa suoritetaan erilaisia komentokehote komentoja aiemmin toteutetussa virtuaalikoneelle asennetussa Debian Linuxissa (https://github.com/GHTuke/linux-palvelimet/blob/main/h1-Oma-linux/h1-raportti.md).\
 Alkuun tiivistetään pääpiirteitä Tero Karvisen webbikirjoituksesta "Command Line Basics Revisited".
 
@@ -189,4 +193,8 @@ Ja koska Nethack:iä on tullut lapsena pelattuna niin paljon oli pakko tilaisuud
 
 ## Lähteet
 
+Karvinen, T. Linux palvelimet 2025 alkukevät. https://terokarvinen.com/linux-palvelimet/.
+
 Karvinen, Tero. 2020-02-03. Command Line Basics Revisited. https://terokarvinen.com/2020/command-line-basics-revisited/.
+
+micro. Manual micro. Console command: `man micro`.

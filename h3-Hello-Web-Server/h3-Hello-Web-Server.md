@@ -4,6 +4,8 @@ Tekijä: Tuukka Huovilainen
 
 * Pohjana Tero Karvinen 2025: Linux Palvelimet kurssi, http://terokarvinen.com
 
+Muokattu 08.03.2025 Lisätty lähteitä
+
 Tässä työkirjassa suoritetaan Linux palvelimet -kurssin tehtävää "Hello web server", jossa asennetaan Apachen webbipalvelin ja otetaan se käyttöön Linuxissa. Käyttöönoton jälkeen muokataan hieman etusivua ja käydään läpi muutamia logeja matkanvarrelta. Tehtävän pohjana on käytetty Tero Karvisen webbikirjoitusta https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/. Alkuun pieni kooste kyseisestä webbikirjoituksesta sekä Apache Software Foundationin kirjoituksesta https://httpd.apache.org/docs/2.4/vhosts/name-based.html.
 
 ## x - Tiivistelmä
@@ -232,6 +234,10 @@ Tässä vaiheessa molemmat osoitteet siis kuuntelevat osoitetta 127.0.0.1, mutta
 Molemmat avasivat omat sivunsa omilla osoitteillaan vaikka molemmilla on sama IP-osoite.
 
 ## Lähteet
+
+apache2. Manual apache2. Console command: `man apache2`.
+
+curl. Manual curl. Console command: `man curl`.
 
 Karvinen, T. 10-04-2018. Name Based Virtual Hosts on Apache – Multiple Websites to Single IP Address. https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/.
 

@@ -36,7 +36,7 @@ micro HelloJava.java
 micro HelloLua.lua
 ```
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/helloKansio.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/helloKansio.png width=700>
 
 Kuva otettu Javan kokoamis komennon käytön jälkeen, sen takia kansiosta löytyy kaksi eri tiedostoa päätteillä .java ja .class. .class tiedosto on se, jonka java sitten ajaa komennossa ja .java sisältää lähdekoodin.
 
@@ -45,7 +45,7 @@ Sitten kirjoitin koodit kaikille ja testasin niiden ajon. Jokaisesta kielestä o
 ```
 print(f'Hello World!')
 ```
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/pythonHello.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/pythonHello.png width=700>
 
 ### Java
 
@@ -59,7 +59,7 @@ public class HelloJava {
 ```
 Javan kanssa täytyi koodi vielä erikseen koota sen kirjoittamisen jälkeen. `javac HelloPython.java` luo .java tiedostosta kootun .class tiedoston, jonka voi sitten ajaa komennolla `java HelloJava`
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/javaHello.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/javaHello.png width=700>
 
 ### Lua
 
@@ -69,7 +69,11 @@ Oli tosin melkeinpä identtinen Pythonin kanssa tässä tapauksessa.
 ```
 print("Hello World!")
 ```
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/luaHello.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/luaHello.png width=700>
+
+## b - Lähdeviittet
+
+Tehtävänä oli tarkastaa aikasempien raporttien lähdeviitteet. Lähteet tarkistettu ja päivitetty 08.03.2025.
 
 ## c - Uusi linux komento
 Localtime: 05.03.2025\
@@ -95,11 +99,11 @@ Tämän jälkeen poistin tiedoston nimestä .sh päätteen komennolla `mv mornin
 
 Testatakseni, että komento toimii nyt myös muilla käyttäjillä loin uuden käyttäjän `sudo adduser testeri`. Ja kirjauduin sisälle käyttäjälle `su testeri`.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/testeriMorningUusi.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/testeriMorningUusi.png width=700>
 
 Näyttääkseni, että uudella käyttäjälle ei ollut oikeuksia tuke käyttäjän kotikansioon ajoin `ls` komennon tuken kotikansiossa, jonka jälkeen siirryin testerin omaan kotikansioon ja varmistin, että se on myös tyhjä. Sen jälkeen ajoin luomani komennon `morning` ja se toimi.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/testeriMorning.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/testeriMorning.png width=700>
 
 Siirryin vielä takaisin tuke käyttäjälle `su tuke` ja ajoin uudestaan `morning` komennon.
 
@@ -131,7 +135,7 @@ $ ufw status
 $ sudo ufw enable 22/tcp
 $ ufw status 
 ```
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/ufwStatusOK.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/ufwStatusOK.png width=700>
 
 Tämän jälkeen, kun oli palomuurissa reikä tulevia yhteyksiä varten, lähdin luomaan uutta käyttäjää ja siirtämään tälle ssh kirjautumis oikeuksia.
 ```
@@ -142,7 +146,7 @@ $ sudo adduser tukete01 sudo
 ```
 Lisäsin tulevia tehtäviä varten uudelle käyttäjälle sudo oikeudet. Nyt pystyin jo kirjautumaan palvelimelle ilman salasanaa uudella käyttäjällä komennolla ´ssh tukete01@80.69.173.203´ ja testasin vielä sudon toiminnan komennolla `sudo echo moikka` ja syöttämällä salasanan.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/uusikayttajaSSH.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/uusikayttajaSSH.png width=700>
 
 ### d 'howdy'
 
@@ -163,11 +167,11 @@ date +'Today is %d.%m.&Y'
 ```
 Tämän jälkeen muutin howdy.sh käyttäjäoikeudet niin, että kaikki saivat execute oikeudet siihen. `chmod ugo+x howdy.sh`. Nyt komento toimi jo ilman bash komentoa edessä sillä tiedostossa oli shebang toiminto alussa ohjaamaan bashin käyttöä. Komennon pystyi siis jo ajamaan komennolla `./howdy.sh`.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/valiHowdy.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/valiHowdy.png width=700>
 
 Sitten vaihdoin tiedoston nimen komennolla `mv howdy.sh howdy` ja siirsin sen local biniin kaikille käyttäjille komennolla `sudo cp howdy /usr/local/bin`. Nyt komento toimi kaikilla käyttäjillä komennolla `howdy`.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/HowdyToimii.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/HowdyToimii.png width=700>
 
 ### e Etusivu uusiksi
 
@@ -180,13 +184,13 @@ Tarkempia askeleita vastaavan tekemiseen löytyy https://github.com/GHTuke/linux
 
 Aloitin tehtävän asentamalla apache webpalvelimen komennolla `sudo apt-get install apache2`. Sen jälkeen testasin sen toiminnan komennolla `curl localhost` ja apachen default sivu oli tullut näkyviin.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/curlLocalhost.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/curlLocalhost.png width=700>
 
 Kuvassa lyhyt versio mitä sivulla näkyy, tärkeimpänä kuitenkin kohta `<title>Apache2 Debian Default Page: It works</title>`.
 
 Lähdin siis luomaan uutta Al Kakone sivua komennolla `sudoedit /etc/apache2/sites-available/alkakone.com.conf`. HOX alkakone kirjoitetaan pienellä L kirjaimella.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/sudoEdit.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/sudoEdit.png width=700>
 
 Kirjoitin vastaavanlaisen sisällön conf tiedostolle. Kuvan versiossa lukee virheellisesti <VirtualHost *80>, korjasin pian kuvan ottamisen jälkeen sen muotoon <VirtualHost *:80>.\
 Tämän jälkeen suoritin muutaman eri komennon avatakseni reiän palomuuriin ja ottaakseni sivun käyttöön.
@@ -208,11 +212,11 @@ $ micro index.html
 ```
 Kirjasin sinne seuraavanlaisen html koodin.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/alKakoneHTML.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/alKakoneHTML.png width=700>
 
 Sen jälkeen käynnistin apachen uudestaan komennolla `sudo systemctl restart apache2`. Sivu ei lähtenyt toimimaan, tarkistin apachen error logit komennolla `sudo tail -1 /var/log/apache2/error.log` ja huomasin, että käyttäjäoikeuksissa polun varrella oli ongelmia. Sama ongelma oli ollut aiemmin kun olin tehnyt vastaavaa ja muistin tarkistaa polun oikeudet komennolla `ls -la`. tukete01 käyttäjän kotikansiosta puuttui execute oikeudet muille, joten apache ei päässyt suorittamaan sen sisältä index sivua, joten lisäsin tarvittavat oikeudet `chmod ugo+x /home/tukete01` ja taas `sudo systemctl restart apache2`. Nyt sivu käynnistyi normaalisti.
 
-<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/alkakoneToimii.png width=800>
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/alkakoneToimii.png width=700>
 
 <img src= width=800>
 
@@ -223,5 +227,3 @@ chmod. Manual chmod. man chmod.
 Dąbrowski, M. Baeldung. Using Shebang #! in Linux. https://www.baeldung.com/linux/shebang. 
 
 Karvinen, T. Linux palvelimet 2025 alkukevät. https://terokarvinen.com/linux-palvelimet/.
-
-

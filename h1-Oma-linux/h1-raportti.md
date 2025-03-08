@@ -1,4 +1,9 @@
 # Tehtävä h1 - Oma linux
+Tekijä: Tuukka Huovilainen
+
+* Pohjana Tero Karvinen 2025: Linux Palvelimet kurssi, http://terokarvinen.com
+
+Muokattu: 08.03.2025 Lisätty lähteitä.
 
 Harjoituksessa ensin pieni tiivistelmä verkkoteksteistä Tero Karvisen Raportin kirjoittaminen sekä Free Software Foundationin määritelmä Free Softwaresta.
 Pääosa harjoituksesta kuitenkin käsittelee Debianin asennusta virtuaalikoneelle noudattaen Tero Karvisen verkkotekstiä https://terokarvinen.com/2021/install-debian-on-virtualbox/.
@@ -279,6 +284,8 @@ Tietoja ei tarvinnut antaa kuin Snapshotin nimi ja selitys.
 
 Free Software Foundation, Inc(FSF). 2024-01-01. What is Free Software?. https://www.gnu.org/philosophy/free-sw.html
 
-Karvinen, Tero. 2006-06-04. Raportin kirjoittaminen. https://terokarvinen.com/2006/raportin-kirjoittaminen-4/
+Karvinen, T. Linux palvelimet 2025 alkukevät. https://terokarvinen.com/linux-palvelimet/.
 
-Karvinen, Tero. 2024-09-26. Install Debian on VirtualBox. https://terokarvinen.com/2021/install-debian-on-virtualbox/
+Karvinen, T. 2006-06-04. Raportin kirjoittaminen. https://terokarvinen.com/2006/raportin-kirjoittaminen-4/
+
+Karvinen, T. 2024-09-26. Install Debian on VirtualBox. https://terokarvinen.com/2021/install-debian-on-virtualbox/

@@ -3,6 +3,8 @@ Tekijä: Tuukka Huovilainen
 
 * Pohjana Tero Karvinen 2025: Linux Palvelimet kurssi, http://terokarvinen.com
 
+Muokattu 08.03.2025 Lisätty lähteitä
+
 Tässä työkirjassa suoritetaan Linux Palvelimet -kurssin tehtävää Nimekäs, jossa vuokrataan nimipalvelusta domain ja asetetaan se osoittamaan aikasemmin tehtävässä h4 järjestettyyn palvelimeen. Aikaisempia tehtäviä h3 ja h4 mukaillen myös muokataan webpalvelimen näyttämää sivua ja tehdään siitä muutaman eri sivun kokonaisuus. Nimipalveluna käytetään NameCheapia.
 
 ## a - Nimi
@@ -203,6 +205,10 @@ Pienenä hauskana lisänä tähän se, että `dig SOA terokarvinen.com` ei palau
 Nyt näkyi myös lisätiedot siitä koska nimipalvelimen tiedot päivittyvät jne (Refresh, retry, expire, minimum).
 
 ## Lähteet
+
+dig. Manual dig. Console command: `man dig`.
+
+host. Manual host. Console command: `man host`.
 
 LinuxBlog. SCP Linux – Securely Copy Files Using SCP examples. https://linuxblog.io/linux-securely-copy-files-using-scp/.
 

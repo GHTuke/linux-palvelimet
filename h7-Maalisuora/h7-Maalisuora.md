@@ -105,6 +105,115 @@ Siirryin vielä takaisin tuke käyttäjälle `su tuke` ja ajoin uudestaan `morni
 
 <img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/tukeMorning.png width=600>
 
+## d - Vanha labra
+Localtime: 08.03.2025\
+Start: 15.40\
+Finish: 16.35
+
+Valitsin laboratorioharjoituksekseni ehdotetulta listalta. Kevään 2024 Linux-palvelimet kurssin loppulaboratorion https://terokarvinen.com/2024/arvioitava-laboratorioharjoitus-2024-linux-palvelimet/.
+
+Siitä soveltuvin osin suoritin osat d/e/g. Jätin siis pois itseni esittelyt ja lopusta Djangon, jota ei tällä kurssilla ole käsitelty.
+
+### g Salattua hallintaa
+
+* Asenna ssh-palvelin
+* Tee uusi käyttäjä omalla nimelläsi, esim. minä tekisin "Tero Karvinen test", login name: "terote01"
+* Automatisoi ssh-kirjautuminen julkisen avaimen menetelmällä, niin että et tarvitse salasanoja, kun kirjaudut sisään. Voit käyttää kirjautumiseen localhost-osoitetta
+
+Tarkempia yksityiskohtia tehtävässä suoritettuihin toimenpiteisiin löytyy https://github.com/GHTuke/linux-palvelimet/blob/main/h4-Maailma-kuulee/h4-Maailma-kuulee.md.
+
+Aloitin tehtävän toteuttamisen kohdasta g, koska joka tapauksessa olin suorittamassa tehtävää uuden palvelimen kautta, jonka loin upCloudiin. Suoritin siis loputkin tehtävät sitten tämän kyseisen palvelimen sisällä. Kun olin luonut uuden palvelimen upCloudille kirjauduin sille komennolla `ssh root@80.69.173.203`. Koska kyseisellä palvelimella ei ollut aiemmin tehty mitään suoritin liudan komentoja saadakseni palvelimen ajantasalle sekä käynnistääkseni palomuurin.
+```
+$ sudo apt-get dist-upgrade
+$ sudo apt-get update
+$ sudo apt-get install ufw
+$ ufw status
+$ sudo ufw enable 22/tcp
+$ ufw status 
+```
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/ufwStatusOK.png width=800>
+
+Tämän jälkeen, kun oli palomuurissa reikä tulevia yhteyksiä varten, lähdin luomaan uutta käyttäjää ja siirtämään tälle ssh kirjautumis oikeuksia.
+```
+$ sudo adduser tukete01
+$ sudo cp -rvn /root/.ssh/ /home/tukete01/
+$ sudo chown -R tukete01:tukete01 /home/tukete01/
+$ sudo adduser tukete01 sudo
+```
+Lisäsin tulevia tehtäviä varten uudelle käyttäjälle sudo oikeudet. Nyt pystyin jo kirjautumaan palvelimelle ilman salasanaa uudella käyttäjällä komennolla ´ssh tukete01@80.69.173.203´ ja testasin vielä sudon toiminnan komennolla `sudo echo moikka` ja syöttämällä salasanan.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/uusikayttajaSSH.png width=800>
+
+### d 'howdy'
+
+* Tee kaikkien käyttäjien käyttöön komento 'howdy'
+        Tulosta haluamaasi ajankohtaista tietoa, esim päivämäärä, koneen osoite tms\
+        Pelkkä "hei maailma" ei riitä
+* Komennon tulee toimia kaikilla käyttäjillä työhakemistosta riippumatta
+
+Tarkempia ohjeita tehtävän suorittamiseen löytyy tämän työkirjan aiemmista osista.
+
+Asensin alkuun micron tekstieditoriksi komennolla `sudo apt-get install micro`. Lähdin sen jälkeen luomaan uutta komentoa luomalla shell script tiedoston `micro howdy.sh`. Sen sisälle kirjoitin seuraavanlaisen koodin.
+```
+#!/usr/bin/bash
+
+echo Howdy
+whoami
+date +'Today is %d.%m.&Y'
+```
+Tämän jälkeen muutin howdy.sh käyttäjäoikeudet niin, että kaikki saivat execute oikeudet siihen. `chmod ugo+x howdy.sh`. Nyt komento toimi jo ilman bash komentoa edessä sillä tiedostossa oli shebang toiminto alussa ohjaamaan bashin käyttöä. Komennon pystyi siis jo ajamaan komennolla `./howdy.sh`.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/valiHowdy.png width=800>
+
+Sitten vaihdoin tiedoston nimen komennolla `mv howdy.sh howdy` ja siirsin sen local biniin kaikille käyttäjille komennolla `sudo cp howdy /usr/local/bin`. Nyt komento toimi kaikilla käyttäjillä komennolla `howdy`.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/HowdyToimii.png width=800>
+
+### e Etusivu uusiksi
+
+* Asenna Apache-weppipalvelin
+* Tee yrityksellemme "AI Kakone" kotisivu
+* Kotisivu tulee näkyä koneesi IP-osoitteella suoraan etusivulla
+* Sivua pitää päästä muokkaamaan normaalin käyttäjän oikeuksin (ilman sudoa). Liitä raporttiisi listaus tarvittavien tiedostojen ja kansioiden oikeuksista.
+
+Tarkempia askeleita vastaavan tekemiseen löytyy https://github.com/GHTuke/linux-palvelimet/blob/main/h3-Hello-Web-Server/h3-Hello-Web-Server.md.
+
+Aloitin tehtävän asentamalla apache webpalvelimen komennolla `sudo apt-get install apache2`. Sen jälkeen testasin sen toiminnan komennolla `curl localhost` ja apachen default sivu oli tullut näkyviin.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/curlLocalhost.png width=800>
+
+Kuvassa lyhyt versio mitä sivulla näkyy, tärkeimpänä kuitenkin kohta `<title>Apache2 Debian Default Page: It works</title>`.
+
+Lähdin siis luomaan uutta Al Kakone sivua komennolla `sudoedit /etc/apache2/sites-available/alkakone.com.conf`. HOX alkakone kirjoitetaan pienellä L kirjaimella.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/sudoEdit.png width=800>
+
+Kirjoitin vastaavanlaisen sisällön conf tiedostolle. Kuvan versiossa lukee virheellisesti <VirtualHost *80>, korjasin pian kuvan ottamisen jälkeen sen muotoon <VirtualHost *:80>.\
+Tämän jälkeen suoritin muutaman eri komennon avatakseni reiän palomuuriin ja ottaakseni sivun käyttöön.
+```
+$ sudo ufw allow 80/tcp
+$ ufw status
+$ sudo a2ensite alkakone.com.conf
+$ sudo a2dissite 000-default.conf
+$ sudo systemctl restart apache2
+```
+Nyt sivu oli asetettu toimintaan, mutta vielä ei ollut index sivua, mitä näyttää. Loin siis uuden sivun ja polun.
+```
+$ cd
+$ mkdir sites
+$ cd sites/
+$ mkdir alkakone.com
+$ cd alkakone.com
+$ micro index.html
+```
+Kirjasin sinne seuraavanlaisen html koodin.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/alKakoneHTML.png width=800>
+
+Sen jälkeen käynnistin apachen uudestaan komennolla `sudo systemctl restart apache2`. Sivu ei lähtenyt toimimaan, tarkistin apachen error logit komennolla `sudo tail -1 /var/log/apache2/error.log` ja huomasin, että käyttäjäoikeuksissa polun varrella oli ongelmia. Sama ongelma oli ollut aiemmin kun olin tehnyt vastaavaa ja muistin tarkistaa polun oikeudet komennolla `ls -la`. tukete01 käyttäjän kotikansiosta puuttui execute oikeudet muille, joten apache ei päässyt suorittamaan sen sisältä index sivua, joten lisäsin tarvittavat oikeudet `chmod ugo+x /home/tukete01` ja taas `sudo systemctl restart apache2`. Nyt sivu käynnistyi normaalisti.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h7-Maalisuora/alkakoneToimii.png width=800>
+
 <img src= width=800>
 
 ## Lähteet

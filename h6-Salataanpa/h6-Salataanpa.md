@@ -3,6 +3,8 @@ Tekijä: Tuukka Huovilainen
 
 * Pohjana Tero Karvinen 2025: Linux Palvelimet kurssi, http://terokarvinen.com
 
+* Muokattu 10.03.2025 Lisätty Security Headers osio loppuun
+
 Tässä työkirjassa suoritetaan Linux Palvelimet -kurssin tehtävää Salataanpa, jossa asetetaan TLS-sertifikaatti aiemmissa työkirjoissa työstetylle palvelimelle (huovilainen.com).
 Alkuun lyhyet tiivistelmät kolmesta artikkelista.
 
@@ -162,6 +164,27 @@ Testin tekemät Handshake simulaatiot myös menivät kaikki läpi, paitsi yksi.
 
 Tässä näkyvä ongelma oli chrome versio 49 ajettuna windows XP versio SP3:lla. Pienen googlettelun jälkeen, Chrome 49 julkaistiin vuonna 2016 ja on siirrytty jo huomattavasti eteenpäin tästä. Windows XP SP3 julkaisiin jo vuonna 2001, ja Windows XP:n support lopetettiin huhtikuun 8.pvä 2014. Eli harvinainen kombinaatio tässä vaiheessa.
 
+## Security Headers
+
+Päätin Giang Le:n raportin https://github.com/gianglex/Linux-palvelimet/blob/main/h6/h6-salataampa.md innoittamana lähteä tarkastamaan oman verkkosivuni turvallisuutta ja lisäämään Security headereitä.
+
+Ajoin ensimmäisen testin verkkosivulla https://developer.mozilla.org/en-US/observatory. Tulos oli heikko vain 10/100 pistettä.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/mdnFirstTest.png width=600>
+
+Testi antoi hyviä vinkkejä itsessään mistä lähteä etsimään lisää tietoa ja tarkastelin https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers sekä Giang Le:n raportista löytyvän https://www.studytonight.com/apache-guide/add-http-security-headers-in-apache-web-server ohjeita. Päädyin tekemään muutoksia huovilainen.com:in conf-tiedostoon.
+
+```
+$ sudoedit /etc/apache2/sites-available/huovilainen.com.conf
+# muutostoten jälkeen
+$ sudo systemctl restart apache2
+```
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/sudoEditHeaders.png width=900>
+
+Nyt ajoin testin uudestaan ja meni läpi 100/100.
+
+<img src=https://github.com/GHTuke/linux-palvelimet/blob/main/h6-Salataanpa/mdnSecondTest.png width=600>
+
 ## Lähteet
 
 Apache. SSL/TLS Strong Encryption: How-To. https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample.
@@ -172,4 +195,10 @@ Let's Encrypt. How it works. https://letsencrypt.org/how-it-works/.
 
 Let's Encrypt 2. Certificate Authority Authorization (CAA). https://letsencrypt.org/fi/docs/caa/.
 
+MDN. HTTP Observatory. https://developer.mozilla.org/en-US/observatory.
+
+MDN web docs. HTTP Headers. https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers.
+
 SSLLabs. SSL Server Test. https://www.ssllabs.com/ssltest/.
+
+StudyTonight. Add HTTP Security Headers in Apache Web Server. https://www.studytonight.com/apache-guide/add-http-security-headers-in-apache-web-server.
